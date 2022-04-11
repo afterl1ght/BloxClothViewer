@@ -1,0 +1,9 @@
+newmtl block6:Dummyr61Mtl
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Ka Dummyr61_fulldiff.png
+Ni 1.00
+Ks 0.06 0.06 0.06
+Ns 0.00

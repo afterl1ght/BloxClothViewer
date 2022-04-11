@@ -1,0 +1,10 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://robloxmodels/mat/blockmat6/blockmatshirt.tres" type="Material" id=1]
+[ext_resource path="res://robloxmodels/pants1.png" type="Texture" id=2]
+
+[resource]
+render_priority = 2
+next_pass = ExtResource( 1 )
+flags_transparent = true
+albedo_texture = ExtResource( 2 )

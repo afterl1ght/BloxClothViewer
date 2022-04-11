@@ -1,0 +1,109 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Control",
+"class": "AvtSubButtons",
+"language": "GDScript",
+"path": "res://scripts/ui/bcvPreviewerButtonBehavior/avtButtonCollectionManager.gd"
+}, {
+"base": "TextureButton",
+"class": "BCVPreviewerButton",
+"language": "GDScript",
+"path": "res://scripts/ui/bcvPreviewerButton.gd"
+}, {
+"base": "BCVPreviewerButton",
+"class": "ClothingLoadButton",
+"language": "GDScript",
+"path": "res://scripts/ui/bcvPreviewerButtonBehavior/loadClothingButton.gd"
+}, {
+"base": "Control",
+"class": "DebugUI",
+"language": "GDScript",
+"path": "res://scripts/ui/DebugUI.gd"
+}, {
+"base": "TextureButton",
+"class": "ImportNotifier",
+"language": "GDScript",
+"path": "res://scripts/ui/ImportNotifier.gd"
+}, {
+"base": "Spatial",
+"class": "SkinModel",
+"language": "GDScript",
+"path": "res://scripts/viewerMech/rotcontrol.gd"
+}, {
+"base": "TextureButton",
+"class": "SmolButts",
+"language": "GDScript",
+"path": "res://scripts/ui/bcvPreviewerButtonBehavior/avtBodyPartSelectionBehavior.gd"
+}, {
+"base": "Control",
+"class": "UIMain",
+"language": "GDScript",
+"path": "res://scripts/ui/UIView.gd"
+} ]
+_global_script_class_icons={
+"AvtSubButtons": "",
+"BCVPreviewerButton": "",
+"ClothingLoadButton": "",
+"DebugUI": "",
+"ImportNotifier": "",
+"SkinModel": "",
+"SmolButts": "",
+"UIMain": ""
+}
+
+[application]
+
+config/name="BloxClothViewer"
+run/main_scene="res://MainView.tscn"
+boot_splash/image="res://akashiroSplash.png"
+boot_splash/bg_color=Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+config/icon="res://icon.png"
+config/version_name="1.0.0-alpha27"
+config/build_phase=27
+
+[autoload]
+
+Preloader="*res://scripts/Preloader.gd"
+
+[debug]
+
+settings/crash_handler/message="An unexpected crash has occurred :("
+
+[display]
+
+window/size/width=720
+window/size/height=1080
+window/dpi/allow_hidpi=true
+window/handheld/orientation="portrait"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[input]
+
+viewer_touch_drag={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/shading/use_physical_light_attenuation=true
+environment/default_environment="res://default_env.tres"

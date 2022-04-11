@@ -1,0 +1,478 @@
+[gd_scene load_steps=49 format=2]
+
+[ext_resource path="res://appassets/texureassets/ui/button/scribblybuttonShirt.png" type="Texture" id=1]
+[ext_resource path="res://appassets/texureassets/ui/button/scribblybuttonPants.png" type="Texture" id=2]
+[ext_resource path="res://appassets/texureassets/ui/button/avtbuttongroup/scribblybuttonAvatar1.png" type="Texture" id=3]
+[ext_resource path="res://appassets/texureassets/ui/button/avtbuttongroup/scribblybuttonAvatar2.png" type="Texture" id=4]
+[ext_resource path="res://appassets/texureassets/ui/button/avtbuttongroup/noArmL.png" type="Texture" id=5]
+[ext_resource path="res://appassets/texureassets/ui/button/avtbuttongroup/noBody.png" type="Texture" id=6]
+[ext_resource path="res://appassets/texureassets/ui/button/avtbuttongroup/scribblybuttonAvatar0.png" type="Texture" id=7]
+[ext_resource path="res://appassets/texureassets/ui/button/avtbuttongroup/noArmR.png" type="Texture" id=8]
+[ext_resource path="res://appassets/texureassets/ui/button/avtbuttongroup/noLegL.png" type="Texture" id=9]
+[ext_resource path="res://appassets/texureassets/ui/button/avtbuttongroup/noLegR.png" type="Texture" id=10]
+[ext_resource path="res://appassets/texureassets/ui/button/avtbuttongroup/noHead.png" type="Texture" id=11]
+[ext_resource path="res://appassets/texureassets/ui/button/scribblyButtonSmallParts/scribblybuttonSmallPartHead.png" type="Texture" id=12]
+[ext_resource path="res://appassets/texureassets/ui/button/scribblyButtonSmallParts/scribblybuttonSmallPartTorso.png" type="Texture" id=13]
+[ext_resource path="res://appassets/texureassets/ui/button/scribblyButtonSmallParts/scribblybuttonSmallPartArmL.png" type="Texture" id=14]
+[ext_resource path="res://appassets/texureassets/ui/button/scribblyButtonSmallParts/scribblybuttonSmallPartArmR.png" type="Texture" id=15]
+[ext_resource path="res://appassets/texureassets/ui/button/scribblyButtonSmallParts/scribblybuttonSmallPartLegR.png" type="Texture" id=16]
+[ext_resource path="res://appassets/texureassets/ui/button/scribblyButtonSmallParts/scribblybuttonSmallPartLegL.png" type="Texture" id=17]
+[ext_resource path="res://appassets/texureassets/ui/button/scribblyAvtPlate.png" type="Texture" id=18]
+[ext_resource path="res://appassets/texureassets/ui/button/buttonVisible.png" type="Texture" id=19]
+[ext_resource path="res://scripts/ui/bcvPreviewerButtonBehavior/avtButtonBehavior.gd" type="Script" id=20]
+[ext_resource path="res://scripts/ui/UIView.gd" type="Script" id=21]
+[ext_resource path="res://scripts/ui/bcvPreviewerButtonBehavior/loadClothingButton.gd" type="Script" id=22]
+[ext_resource path="res://appassets/texureassets/ui/button/buttonInvisible.png" type="Texture" id=23]
+[ext_resource path="res://scripts/ui/bcvPreviewerButtonBehavior/clothingVisibleButton.gd" type="Script" id=24]
+[ext_resource path="res://appassets/texureassets/ui/button/buttonColor.png" type="Texture" id=25]
+[ext_resource path="res://appassets/texureassets/ui/button/buttonLocked.png" type="Texture" id=26]
+[ext_resource path="res://appassets/texureassets/ui/button/scribblyAvtConfigPlate.png" type="Texture" id=27]
+[ext_resource path="res://appassets/texureassets/ui/button/scribblyButtonSmallParts/scribblybuttonAllSmallParts.png" type="Texture" id=28]
+[ext_resource path="res://appassets/texureassets/ui/button/scribblyButtonSmallParts/circles/selectCircle1.png" type="Texture" id=29]
+[ext_resource path="res://appassets/texureassets/ui/button/scribblyButtonSmallParts/circles/selectCircle3.png" type="Texture" id=30]
+[ext_resource path="res://appassets/texureassets/ui/button/scribblyButtonSmallParts/circles/selectCircle4.png" type="Texture" id=31]
+[ext_resource path="res://appassets/texureassets/ui/button/scribblyButtonSmallParts/circles/selectCircle2.png" type="Texture" id=32]
+[ext_resource path="res://appassets/texureassets/ui/button/scribblyButtonSmallParts/circles/selectCircle0.png" type="Texture" id=33]
+[ext_resource path="res://scripts/ui/bcvPreviewerButtonBehavior/avtButtonCollectionManager.gd" type="Script" id=34]
+[ext_resource path="res://scripts/ui/bcvPreviewerButtonBehavior/avtPerPartVisibleButton.gd" type="Script" id=35]
+[ext_resource path="res://scripts/ui/bcvPreviewerButtonBehavior/avtBodyPartSelectionBehavior.gd" type="Script" id=36]
+[ext_resource path="res://scripts/ui/bcvPreviewerButtonBehavior/avtCurrentlyEditingBehavior.gd" type="Script" id=37]
+[ext_resource path="res://appassets/fontassets/Roboto-Light.ttf" type="DynamicFontData" id=38]
+[ext_resource path="res://scripts/ui/DebugUI.gd" type="Script" id=39]
+[ext_resource path="res://appassets/texureassets/ui/statusNotice/statusnoticeFailedGeneric.png" type="Texture" id=40]
+[ext_resource path="res://appassets/texureassets/ui/statusNotice/warningSize.png" type="Texture" id=41]
+[ext_resource path="res://appassets/texureassets/ui/statusNotice/statusnoticePantsies.png" type="Texture" id=42]
+[ext_resource path="res://appassets/texureassets/ui/statusNotice/statusnoticeYay.png" type="Texture" id=43]
+[ext_resource path="res://appassets/texureassets/ui/statusNotice/statusnotice.png" type="Texture" id=44]
+[ext_resource path="res://appassets/texureassets/ui/statusNotice/statusok.png" type="Texture" id=45]
+[ext_resource path="res://scripts/ui/ImportNotifier.gd" type="Script" id=46]
+[ext_resource path="res://scripts/ui/statusOfClothing/statusIcon.gd" type="Script" id=47]
+
+[sub_resource type="DynamicFont" id=1]
+use_filter = true
+font_data = ExtResource( 38 )
+
+[node name="UIMain" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 21 )
+
+[node name="DebugUI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 39 )
+
+[node name="version" type="RichTextLabel" parent="DebugUI"]
+anchor_right = 1.0
+margin_left = 12.0
+margin_top = 12.0
+margin_right = -12.0
+margin_bottom = 100.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "Version 1.0.0-test (Build Phase 0)"
+
+[node name="PreviewerUI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="LoadShirt" type="TextureButton" parent="PreviewerUI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = -396.0
+margin_right = 204.0
+margin_bottom = -204.0
+rect_pivot_offset = Vector2( 96, 96 )
+texture_normal = ExtResource( 1 )
+script = ExtResource( 22 )
+uiMainPath = NodePath("../..")
+isShirt = true
+opposingClothingButtonPath = NodePath("../LoadPants")
+importNotifierPath = NodePath("../Notifier")
+
+[node name="Visible" type="TextureButton" parent="PreviewerUI/LoadShirt"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_scale = Vector2( 0.75, 0.75 )
+toggle_mode = true
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 23 )
+script = ExtResource( 24 )
+
+[node name="Status" type="TextureButton" parent="PreviewerUI/LoadShirt"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -84.0
+margin_top = -84.0
+margin_right = 12.0
+margin_bottom = 12.0
+rect_pivot_offset = Vector2( 96, 96 )
+mouse_filter = 2
+texture_normal = ExtResource( 45 )
+script = ExtResource( 47 )
+
+[node name="bubble" type="TextureButton" parent="PreviewerUI/LoadShirt/Status"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -192.0
+margin_right = 500.0
+rect_pivot_offset = Vector2( 0, 192 )
+texture_normal = ExtResource( 41 )
+
+[node name="Tween" type="Tween" parent="PreviewerUI/LoadShirt/Status/bubble"]
+
+[node name="LoadPants" type="TextureButton" parent="PreviewerUI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = -204.0
+margin_right = 204.0
+margin_bottom = -12.0
+rect_pivot_offset = Vector2( 96, 96 )
+texture_normal = ExtResource( 2 )
+script = ExtResource( 22 )
+uiMainPath = NodePath("../..")
+opposingClothingButtonPath = NodePath("../LoadShirt")
+importNotifierPath = NodePath("../Notifier")
+
+[node name="Visible" type="TextureButton" parent="PreviewerUI/LoadPants"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_scale = Vector2( 0.75, 0.75 )
+toggle_mode = true
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 23 )
+script = ExtResource( 24 )
+
+[node name="Status" type="TextureButton" parent="PreviewerUI/LoadPants"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -84.0
+margin_top = -84.0
+margin_right = 12.0
+margin_bottom = 12.0
+rect_pivot_offset = Vector2( 96, 96 )
+mouse_filter = 2
+texture_normal = ExtResource( 45 )
+script = ExtResource( 47 )
+
+[node name="bubble" type="TextureButton" parent="PreviewerUI/LoadPants/Status"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -192.0
+margin_right = 500.0
+rect_pivot_offset = Vector2( 0, 192 )
+texture_normal = ExtResource( 41 )
+
+[node name="Tween" type="Tween" parent="PreviewerUI/LoadPants/Status/bubble"]
+
+[node name="AvtSubButtons" type="Control" parent="PreviewerUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 350.0
+margin_right = 350.0
+mouse_filter = 2
+script = ExtResource( 34 )
+uiMainPath = NodePath("../..")
+
+[node name="Plate" type="TextureRect" parent="PreviewerUI/AvtSubButtons"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -315.0
+margin_top = 208.0
+margin_right = -63.0
+margin_bottom = 450.0
+rect_scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 18 )
+
+[node name="ConfigPlate" type="TextureRect" parent="PreviewerUI/AvtSubButtons/Plate"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -252.0
+margin_top = -16.0
+margin_bottom = 60.0
+texture = ExtResource( 27 )
+
+[node name="CurrentlyEditing" type="TextureRect" parent="PreviewerUI/AvtSubButtons/Plate/ConfigPlate"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -64.0
+margin_right = 112.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 0, 64 )
+texture = ExtResource( 28 )
+script = ExtResource( 37 )
+bodyPartPaths = [ NodePath("../../../SmolHead"), NodePath("../../../SmolTorso"), NodePath("../../../SmolArmL"), NodePath("../../../SmolArmR"), NodePath("../../../SmolLegL"), NodePath("../../../SmolLegR") ]
+avtSubButtonPath = NodePath("../../..")
+
+[node name="Visible" type="TextureButton" parent="PreviewerUI/AvtSubButtons/Plate/ConfigPlate"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -182.0
+margin_top = -50.0
+margin_right = -86.0
+margin_bottom = 46.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 48, 48 )
+toggle_mode = true
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 23 )
+script = ExtResource( 35 )
+avtSubButtonPath = NodePath("../../..")
+
+[node name="Color" type="TextureButton" parent="PreviewerUI/AvtSubButtons/Plate/ConfigPlate"]
+modulate = Color( 0.392157, 0.392157, 0.392157, 1 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -102.0
+margin_top = -50.0
+margin_right = -6.0
+margin_bottom = 46.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 48, 48 )
+texture_normal = ExtResource( 25 )
+
+[node name="LOCKED" type="TextureRect" parent="PreviewerUI/AvtSubButtons/Plate/ConfigPlate"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -102.0
+margin_top = -12.0
+margin_right = -6.0
+margin_bottom = 84.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 48, 48 )
+texture = ExtResource( 26 )
+
+[node name="SmolHead" type="TextureButton" parent="PreviewerUI/AvtSubButtons"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -208.0
+margin_top = 192.0
+margin_right = -80.0
+margin_bottom = 320.0
+rect_scale = Vector2( 0.75, 0.75 )
+rect_pivot_offset = Vector2( 64, 64 )
+texture_normal = ExtResource( 12 )
+script = ExtResource( 36 )
+
+[node name="SelectCircle" type="TextureRect" parent="PreviewerUI/AvtSubButtons/SmolHead"]
+visible = false
+margin_left = -12.0
+margin_top = -12.0
+margin_right = 140.0
+margin_bottom = 140.0
+texture = ExtResource( 33 )
+
+[node name="SmolTorso" type="TextureButton" parent="PreviewerUI/AvtSubButtons"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -208.0
+margin_top = 280.0
+margin_right = -80.0
+margin_bottom = 408.0
+rect_scale = Vector2( 0.75, 0.75 )
+rect_pivot_offset = Vector2( 64, 64 )
+texture_normal = ExtResource( 13 )
+script = ExtResource( 36 )
+bodyIndex = 1
+
+[node name="SelectCircle" type="TextureRect" parent="PreviewerUI/AvtSubButtons/SmolTorso"]
+visible = false
+margin_left = -12.0
+margin_top = -12.0
+margin_right = 140.0
+margin_bottom = 140.0
+texture = ExtResource( 29 )
+
+[node name="SmolArmR" type="TextureButton" parent="PreviewerUI/AvtSubButtons"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -296.0
+margin_top = 280.0
+margin_right = -168.0
+margin_bottom = 408.0
+rect_scale = Vector2( 0.75, 0.75 )
+rect_pivot_offset = Vector2( 64, 64 )
+texture_normal = ExtResource( 15 )
+script = ExtResource( 36 )
+bodyIndex = 3
+
+[node name="SelectCircle" type="TextureRect" parent="PreviewerUI/AvtSubButtons/SmolArmR"]
+visible = false
+margin_left = -12.0
+margin_top = -12.0
+margin_right = 140.0
+margin_bottom = 140.0
+texture = ExtResource( 32 )
+
+[node name="SmolArmL" type="TextureButton" parent="PreviewerUI/AvtSubButtons"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -120.0
+margin_top = 280.0
+margin_right = 8.0
+margin_bottom = 408.0
+rect_scale = Vector2( 0.75, 0.75 )
+rect_pivot_offset = Vector2( 64, 64 )
+texture_normal = ExtResource( 14 )
+script = ExtResource( 36 )
+bodyIndex = 2
+
+[node name="SelectCircle" type="TextureRect" parent="PreviewerUI/AvtSubButtons/SmolArmL"]
+visible = false
+margin_left = -12.0
+margin_top = -12.0
+margin_right = 140.0
+margin_bottom = 140.0
+texture = ExtResource( 30 )
+
+[node name="SmolLegR" type="TextureButton" parent="PreviewerUI/AvtSubButtons"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -256.0
+margin_top = 380.0
+margin_right = -128.0
+margin_bottom = 508.0
+rect_scale = Vector2( 0.75, 0.75 )
+rect_pivot_offset = Vector2( 64, 64 )
+texture_normal = ExtResource( 16 )
+script = ExtResource( 36 )
+bodyIndex = 5
+
+[node name="SelectCircle" type="TextureRect" parent="PreviewerUI/AvtSubButtons/SmolLegR"]
+visible = false
+margin_left = -12.0
+margin_top = -12.0
+margin_right = 140.0
+margin_bottom = 140.0
+texture = ExtResource( 31 )
+
+[node name="SmolLegL" type="TextureButton" parent="PreviewerUI/AvtSubButtons"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -168.0
+margin_top = 380.0
+margin_right = -40.0
+margin_bottom = 508.0
+rect_scale = Vector2( 0.75, 0.75 )
+rect_pivot_offset = Vector2( 64, 64 )
+texture_normal = ExtResource( 17 )
+script = ExtResource( 36 )
+bodyIndex = 4
+
+[node name="SelectCircle" type="TextureRect" parent="PreviewerUI/AvtSubButtons/SmolLegL"]
+visible = false
+margin_left = -12.0
+margin_top = -12.0
+margin_right = 140.0
+margin_bottom = 140.0
+texture = ExtResource( 29 )
+
+[node name="Tween" type="Tween" parent="PreviewerUI/AvtSubButtons"]
+
+[node name="AvtButton" type="TextureButton" parent="PreviewerUI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -192.0
+margin_bottom = 192.0
+rect_pivot_offset = Vector2( 96, 96 )
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+script = ExtResource( 20 )
+uiMainPath = NodePath("../..")
+avtSubPlatePath = NodePath("../AvtSubButtons")
+
+[node name="No" type="Control" parent="PreviewerUI/AvtButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ArmL" type="TextureRect" parent="PreviewerUI/AvtButton/No"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+
+[node name="ArmR" type="TextureRect" parent="PreviewerUI/AvtButton/No"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+
+[node name="Torso" type="TextureRect" parent="PreviewerUI/AvtButton/No"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+
+[node name="LegL" type="TextureRect" parent="PreviewerUI/AvtButton/No"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+
+[node name="LegR" type="TextureRect" parent="PreviewerUI/AvtButton/No"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 10 )
+
+[node name="Head" type="TextureRect" parent="PreviewerUI/AvtButton/No"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 11 )
+
+[node name="T1" type="TextureRect" parent="PreviewerUI/AvtButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+
+[node name="T2" type="TextureRect" parent="PreviewerUI/AvtButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+
+[node name="Notifier" type="TextureButton" parent="PreviewerUI"]
+margin_left = -800.0
+margin_top = 48.0
+margin_bottom = 240.0
+texture_normal = ExtResource( 44 )
+script = ExtResource( 46 )
+
+[node name="NoticeText" type="TextureRect" parent="PreviewerUI/Notifier"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 40 )
+
+[node name="NoticePic" type="TextureRect" parent="PreviewerUI/Notifier"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 42 )
+
+[node name="NoticeStatus" type="TextureRect" parent="PreviewerUI/Notifier"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 43 )
+
+[node name="Tween" type="Tween" parent="PreviewerUI/Notifier"]
