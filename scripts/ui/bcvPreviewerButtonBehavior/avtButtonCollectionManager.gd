@@ -16,6 +16,7 @@ var bodyPartButtonIds = {
 var selectedIndex = -1 setget onSelectedIndex
 # All
 
+var genericColor = Color(162, 162, 162)
 onready var bodyPartInfo = {
 	"block6": [
 		#head 0
@@ -23,7 +24,7 @@ onready var bodyPartInfo = {
 			#transparency
 			false,
 			#color
-			Color.white,
+			genericColor,
 			#surface id of part
 			0,
 			#material
@@ -34,9 +35,9 @@ onready var bodyPartInfo = {
 			#transparency
 			false,
 			#color
-			Color.white,
+			genericColor,
 			#surface id of part
-			5,
+			3,
 			#material
 			Preloader.blockmatBody6
 		],
@@ -45,9 +46,9 @@ onready var bodyPartInfo = {
 			#transparency
 			false,
 			#color
-			Color.white,
+			genericColor,
 			#surface id of part
-			3,
+			2,
 			#material
 			Preloader.blockmatArms6
 		],
@@ -56,18 +57,18 @@ onready var bodyPartInfo = {
 			#transparency
 			false,
 			#color
-			Color.white,
+			genericColor,
 			#surface id of part
 			1,
 			#material
-			Preloader.blockmatArms6
+			Preloader.blockmatArmsRight6
 		],
 		#leg left 4
 		[
 			#transparency
 			false,
 			#color
-			Color.white,
+			genericColor,
 			#surface id of part
 			4,
 			#material
@@ -78,11 +79,11 @@ onready var bodyPartInfo = {
 			#transparency
 			false,
 			#color
-			Color.white,
+			genericColor,
 			#surface id of part
-			2,
+			5,
 			#material
-			Preloader.blockmatLegs6
+			Preloader.blockmatLegsRight6
 		]
 	]
 }
@@ -153,14 +154,30 @@ func toggleAllVisibility():
 		invisibleCount = bodyPartInfo[blockModel.name].size()
 		isAllInvisible = true
 
-func changeBodyPartColor(partIndex, color):
+# This one would require a particular partIndex within the body part quantity
+func changeBodyPartColor(partIndex : int, color : Color):
 	# update body color
-	var blockModel : MeshInstance = null
-	if (uiMain and uiMain.skinModel and uiMain.skinModel.blockModel):
-		blockModel = uiMain.skinModel.blockModel
+	var blockModel : MeshInstance = getCurrentBlockModel()
 	
 	if (blockModel and bodyPartInfo[blockModel.name]):
-		bodyPartInfo[blockModel.name][partIndex][1] = color
+		bodyPartInfo[blockModel.name][partIndex][1] = color # Is this necessary??
+		bodyPartInfo[blockModel.name][partIndex][3].albedo_color = color
+
+func changeCurrentBodyPartColor(color : Color):
+	var blockModel : MeshInstance = getCurrentBlockModel()
+	if selectedIndex < 0: # consider failsafe for >= .size()?
+		for bpi in bodyPartInfo[blockModel.name].size():
+			changeBodyPartColor(bpi, color)
+	else:
+		changeBodyPartColor(selectedIndex, color)
+
+func getBodyPartColor(partIndex : int):
+	var blockModel : MeshInstance = getCurrentBlockModel()
+	
+	if (blockModel and bodyPartInfo[blockModel.name]):
+		return bodyPartInfo[blockModel.name][partIndex][3].albedo_color
+	
+	return null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

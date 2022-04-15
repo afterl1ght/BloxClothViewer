@@ -13,7 +13,13 @@ func _pressed():
 			parent.selectedIndex = bodyIndex
 			
 func _process(_dt):
+	var currentModel = parent.getCurrentBlockModel()
 	if parent.selectedIndex == bodyIndex:
 		$SelectCircle.visible = true
 	else:
 		$SelectCircle.visible = false
+		
+	if parent.bodyPartInfo[currentModel.name][bodyIndex][0]:
+		self_modulate = Color(0.392, 0.392, 0.392, 1)
+	else:
+		self_modulate = Color(1, 1, 1, 1)

@@ -24,6 +24,8 @@ var limvoff = 1
 var currentRadius := -1
 var currentCenter := Vector2.ZERO
 
+var unhandled_dragged = false
+
 func _ready():
 	self.currentfov = ORIGINAL_FOV
 
@@ -53,12 +55,18 @@ func zoomcam(rate: int):
 	self.currentfov += rate * 0.05
 	self.currentfov = clamp(currentfov, MIN_FOV, MAX_FOV)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch and event.pressed:
+		unhandled_dragged = true
+	if event is InputEventScreenTouch and !(event.pressed):
+		unhandled_dragged = false
+
 func _input(event) -> void:
 	if event is InputEventScreenTouch and event.pressed == true:
 		touches[event.index] = {"start":event, "current":event}
 	if event is InputEventScreenTouch and event.pressed == false:
 		touches.erase(event.index)
-	if event is InputEventScreenDrag:
+	if event is InputEventScreenDrag and touches.size() > 0 and event.index < touches.size() and unhandled_dragged:
 		touches[event.index]["current"] = event
 
 func _process(_dt):

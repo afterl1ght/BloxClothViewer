@@ -7,6 +7,7 @@
 render_priority = 1
 next_pass = ExtResource( 2 )
 vertex_color_is_srgb = true
+albedo_color = Color( 0.635294, 0.635294, 0.635294, 1 )
 albedo_texture = ExtResource( 1 )
 roughness = 0.75
 ao_enabled = true

@@ -31,7 +31,6 @@ func on_part_transparency_change(bodyIndex, transparent):
 func _toggled(button_pressed):
 	if avtSubPlate and subplateTween:
 		if button_pressed:
-			avtSubPlate.selectedIndex = -1
 			subplateTween.stop_all()
 			subplateTween.interpolate_property(avtSubPlate, "rect_position", avtSubPlate.rect_position, Vector2(0, avtSubPlate.rect_position.y), TOGGLE_EASING_TIME, Tween.TRANS_QUAD, Tween.EASE_OUT)
 			subplateTween.start()

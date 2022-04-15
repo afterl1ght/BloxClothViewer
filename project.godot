@@ -25,9 +25,19 @@ _global_script_classes=[ {
 "path": "res://scripts/ui/bcvPreviewerButtonBehavior/loadClothingButton.gd"
 }, {
 "base": "Control",
+"class": "ColorPlate",
+"language": "GDScript",
+"path": "res://scripts/ui/colorWheel/ColorPlate.gd"
+}, {
+"base": "Control",
 "class": "DebugUI",
 "language": "GDScript",
 "path": "res://scripts/ui/DebugUI.gd"
+}, {
+"base": "LineEdit",
+"class": "HexColEdit",
+"language": "GDScript",
+"path": "res://scripts/ui/colorWheel/HexColEdit.gd"
 }, {
 "base": "TextureButton",
 "class": "ImportNotifier",
@@ -48,16 +58,30 @@ _global_script_classes=[ {
 "class": "UIMain",
 "language": "GDScript",
 "path": "res://scripts/ui/UIView.gd"
+}, {
+"base": "Control",
+"class": "ValueBar",
+"language": "GDScript",
+"path": "res://scripts/ui/colorWheel/ColValueBar.gd"
+}, {
+"base": "Control",
+"class": "WheelColor",
+"language": "GDScript",
+"path": "res://scripts/ui/colorWheel/ColWheelHue.gd"
 } ]
 _global_script_class_icons={
 "AvtSubButtons": "",
 "BCVPreviewerButton": "",
 "ClothingLoadButton": "",
+"ColorPlate": "",
 "DebugUI": "",
+"HexColEdit": "",
 "ImportNotifier": "",
 "SkinModel": "",
 "SmolButts": "",
-"UIMain": ""
+"UIMain": "",
+"ValueBar": "",
+"WheelColor": ""
 }
 
 [application]
@@ -67,8 +91,8 @@ run/main_scene="res://MainView.tscn"
 boot_splash/image="res://akashiroSplash.png"
 boot_splash/bg_color=Color( 0.0745098, 0.0745098, 0.0745098, 1 )
 config/icon="res://icon.png"
-config/version_name="1.0.0-alpha27"
-config/build_phase=27
+config/version_name="1.0.0-alpha28"
+config/build_phase=35
 
 [autoload]
 

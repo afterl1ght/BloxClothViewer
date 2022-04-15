@@ -21,3 +21,4 @@ ss_reflections_max_steps = 150
 ss_reflections_fade_in = 0.0512267
 ss_reflections_fade_out = 0.159321
 ssao_enabled = true
+adjustment_enabled = true

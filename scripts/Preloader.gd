@@ -5,9 +5,11 @@ onready var invisibleMat = preload("res://robloxmodels/mat/invisible.tres")
 
 # block r6 materials
 onready var blockmatArms6 = preload("res://robloxmodels/mat/blockmat6/blockmatArms6.tres")
+onready var blockmatArmsRight6 = preload("res://robloxmodels/mat/blockmat6/blockmatArmsRight6.tres")
 onready var blockmatBody6 = preload("res://robloxmodels/mat/blockmat6/blockmatBody6.tres")
 onready var blockmatHead6 = preload("res://robloxmodels/mat/blockmat6/blockmatHead6.tres")
 onready var blockmatLegs6 = preload("res://robloxmodels/mat/blockmat6/blockmatLegs6.tres")
+onready var blockmatLegsRight6 = preload("res://robloxmodels/mat/blockmat6/blockmatLegsRight6.tres")
 
 # clothing materials
 onready var blockmatpants = preload("res://robloxmodels/mat/blockmat6/blockmatpants.tres")

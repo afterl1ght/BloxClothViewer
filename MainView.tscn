@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://robloxmodels/updatedBlockModels/r6/clothCompatBlockR6.obj" type="ArrayMesh" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://robloxmodels/mat/blockmat6/blockmatLegs6.tres" type="Material" id=8]
 [ext_resource path="res://robloxmodels/mat/blockmat6/blockmatArms6.tres" type="Material" id=9]
 [ext_resource path="res://UIView.tscn" type="PackedScene" id=10]
+[ext_resource path="res://robloxmodels/mat/blockmat6/blockmatArmsRight6.tres" type="Material" id=11]
+[ext_resource path="res://robloxmodels/mat/blockmat6/blockmatLegsRight6.tres" type="Material" id=12]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -32,16 +34,16 @@ blockModelPath = NodePath("SkinMain/block6")
 transform = Transform( 0.898794, 0, -0.438371, 0, 1, 0, 0.438371, 0, 0.898794, 0, 0, 0 )
 
 [node name="block6" type="MeshInstance" parent="SkinModel/SkinMain"]
-transform = Transform( 1, -8.9407e-08, 1.19209e-07, 2.98023e-08, 1, -2.98023e-08, 2.98023e-08, 2.38419e-07, 1, 2.98023e-08, -2.5, -0.5 )
+transform = Transform( 1, -1.04308e-07, 1.19209e-07, 2.98023e-08, 1, -2.98023e-08, 2.98023e-08, 3.27826e-07, 1, 2.98023e-08, -2.5, -0.5 )
 layers = 3
 mesh = ExtResource( 2 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 3 )
-material/1 = ExtResource( 9 )
-material/2 = ExtResource( 8 )
-material/3 = ExtResource( 9 )
+material/1 = ExtResource( 11 )
+material/2 = ExtResource( 9 )
+material/3 = ExtResource( 7 )
 material/4 = ExtResource( 8 )
-material/5 = ExtResource( 7 )
+material/5 = ExtResource( 12 )
 
 [node name="gridsquare" type="MeshInstance" parent="SkinModel/SkinMain"]
 transform = Transform( 50, -6.67572e-06, -2.98023e-08, 0, -1.90735e-06, 1, -9.53674e-07, -50, 8.9407e-08, 2.98023e-08, -2.586, -5.96046e-08 )
@@ -52,72 +54,6 @@ material/0 = ExtResource( 6 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.994217, 0.00777725, -0.10711, -8.71932e-08, -0.997374, -0.07242, -0.107392, 0.0720012, -0.991606, 1.3857, 3.68235, -7.32788 )
-visible = false
-
-[node name="Spotlights" type="Spatial" parent="."]
-
-[node name="SpotLight" type="SpotLight" parent="Spotlights"]
-transform = Transform( 0.994649, 1.58434e-07, -0.103313, 0.10036, -0.237398, 0.966214, -0.0245262, -0.971413, -0.236127, -2.10341, 11.5905, -2.65902 )
-light_energy = 5.0
-light_indirect_energy = 2.0
-light_cull_mask = 4294967293
-shadow_enabled = true
-spot_range = 25.0
-spot_angle = 18.58
-
-[node name="SpotLight2" type="SpotLight" parent="Spotlights"]
-transform = Transform( 0.972313, 0.0811421, 0.219143, -0.227003, 0.105338, 0.968181, 0.0554762, -0.991121, 0.120841, 3.01809, 10.631, 1.54632 )
-light_energy = 5.0
-light_indirect_energy = 2.0
-light_cull_mask = 4294967293
-shadow_enabled = true
-spot_range = 25.0
-spot_angle = 18.58
-
-[node name="SpotLight3" type="SpotLight" parent="Spotlights"]
-transform = Transform( 0.937793, -0.014799, 0.346879, -0.335407, -0.296738, 0.894119, 0.0897001, -0.954844, -0.283242, 3.33345, 12.3381, -3.07795 )
-light_energy = 5.0
-light_indirect_energy = 2.0
-light_cull_mask = 4294967293
-shadow_enabled = true
-spot_range = 25.0
-spot_angle = 18.58
-
-[node name="SpotLight4" type="SpotLight" parent="Spotlights"]
-transform = Transform( -0.0452161, -0.014799, 0.998868, -0.953773, -0.296738, -0.0475712, 0.297106, -0.954844, -0.000697578, 10.0298, 1.57245, 0.589548 )
-light_energy = 5.0
-light_indirect_energy = 2.0
-light_cull_mask = 4294967293
-shadow_enabled = true
-spot_range = 25.0
-spot_angle = 18.58
-
-[node name="SpotLight5" type="SpotLight" parent="Spotlights"]
-transform = Transform( -0.0452161, -0.0119635, -0.998906, -0.953773, 0.297906, 0.0396052, 0.297106, 0.95452, -0.0248806, -17.3216, 2.87506, 0.60865 )
-light_energy = 5.0
-light_indirect_energy = 2.0
-light_cull_mask = 4294967293
-shadow_enabled = true
-spot_range = 25.0
-spot_angle = 18.58
-
-[node name="SpotLight6" type="SpotLight" parent="Spotlights"]
-transform = Transform( -0.0499472, -0.998573, -0.0188958, -0.993514, 0.0516114, -0.101319, 0.10215, 0.0137127, -0.994675, -0.358114, 1.54094, -8.95716 )
-light_energy = 5.0
-light_indirect_energy = 2.0
-light_cull_mask = 4294967293
-shadow_enabled = true
-spot_range = 25.0
-spot_angle = 18.58
-
-[node name="SpotLight7" type="SpotLight" parent="Spotlights"]
-transform = Transform( -0.0499472, 0.9963, -0.0699463, -0.993514, -0.0424004, 0.105506, 0.10215, 0.0747624, 0.991956, -0.788653, 4.04892, 15.3867 )
-light_energy = 5.0
-light_indirect_energy = 2.0
-light_cull_mask = 4294967293
-shadow_enabled = true
-spot_range = 25.0
-spot_angle = 18.58
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
