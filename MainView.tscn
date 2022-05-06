@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://robloxmodels/updatedBlockModels/r6/clothCompatBlockR6.obj" type="ArrayMesh" id=2]
@@ -12,10 +12,13 @@
 [ext_resource path="res://UIView.tscn" type="PackedScene" id=10]
 [ext_resource path="res://robloxmodels/mat/blockmat6/blockmatArmsRight6.tres" type="Material" id=11]
 [ext_resource path="res://robloxmodels/mat/blockmat6/blockmatLegsRight6.tres" type="Material" id=12]
+[ext_resource path="res://UIDebug.tscn" type="PackedScene" id=13]
 
 [sub_resource type="QuadMesh" id=1]
 
 [node name="Node" type="Node"]
+
+[node name="DebugUI" parent="." instance=ExtResource( 13 )]
 
 [node name="UIMain" parent="." instance=ExtResource( 10 )]
 skinModelPath = NodePath("../SkinModel")

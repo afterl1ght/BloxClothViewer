@@ -1,5 +1,8 @@
 extends TextureRect
 
+# HexColPreviewSync... I must've been really sleepy while naming this
+class_name HexColPlate
+
 var parent : ColorPlate
 
 func _ready():

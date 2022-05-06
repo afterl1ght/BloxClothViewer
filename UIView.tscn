@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://appassets/texureassets/ui/button/scribblybuttonShirt.png" type="Texture" id=1]
 [ext_resource path="res://appassets/texureassets/ui/button/scribblybuttonPants.png" type="Texture" id=2]
@@ -37,8 +37,6 @@
 [ext_resource path="res://scripts/ui/bcvPreviewerButtonBehavior/avtPerPartVisibleButton.gd" type="Script" id=35]
 [ext_resource path="res://scripts/ui/bcvPreviewerButtonBehavior/avtBodyPartSelectionBehavior.gd" type="Script" id=36]
 [ext_resource path="res://scripts/ui/bcvPreviewerButtonBehavior/avtCurrentlyEditingBehavior.gd" type="Script" id=37]
-[ext_resource path="res://appassets/fontassets/Roboto-Light.ttf" type="DynamicFontData" id=38]
-[ext_resource path="res://scripts/ui/DebugUI.gd" type="Script" id=39]
 [ext_resource path="res://appassets/texureassets/ui/statusNotice/statusnoticeFailedGeneric.png" type="Texture" id=40]
 [ext_resource path="res://appassets/texureassets/ui/statusNotice/warningSize.png" type="Texture" id=41]
 [ext_resource path="res://appassets/texureassets/ui/statusNotice/statusnoticePantsies.png" type="Texture" id=42]
@@ -61,10 +59,6 @@
 [ext_resource path="res://scripts/ui/colorWheel/HexColPreviewSync.gd" type="Script" id=59]
 [ext_resource path="res://appassets/texureassets/ui/button/scribblyButtonUndercolor.png" type="Texture" id=60]
 
-[sub_resource type="DynamicFont" id=1]
-use_filter = true
-font_data = ExtResource( 38 )
-
 [sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=2]
@@ -74,22 +68,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 21 )
-
-[node name="DebugUI" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-script = ExtResource( 39 )
-
-[node name="version" type="RichTextLabel" parent="DebugUI"]
-anchor_right = 1.0
-margin_left = 12.0
-margin_top = 12.0
-margin_right = -12.0
-margin_bottom = 100.0
-custom_fonts/normal_font = SubResource( 1 )
-text = "Version 1.0.0-test (Build Phase 0)
-TEST BUILD. CHANGES WILL BE MADE. OBVIOUSLY."
 
 [node name="PreviewerUI" type="Control" parent="."]
 anchor_right = 1.0
@@ -311,6 +289,7 @@ context_menu_enabled = false
 caret_blink = true
 caret_blink_speed = 0.5
 script = ExtResource( 58 )
+uiMainPath = NodePath("../../../..")
 
 [node name="HexBegin" type="RichTextLabel" parent="PreviewerUI/AvtSubButtons/ColorPlate"]
 anchor_left = 0.5
