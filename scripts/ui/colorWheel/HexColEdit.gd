@@ -5,7 +5,7 @@ class_name HexColEdit
 export(NodePath) var uiMainPath
 onready var uiMain : UIMain = get_node(uiMainPath)
 
-var parent : ColorPlate
+var parent # ColorPlate/ColorPlateCompat
 
 var hexlen : int = 6
 var previous : String = "FFFFFF"
@@ -45,7 +45,6 @@ func fill_blank(txt : String) -> String:
 		for _i in diff:
 			filler += "f"
 		return txt + filler
-		
 	return txt
 
 func sync_color(col : Color):

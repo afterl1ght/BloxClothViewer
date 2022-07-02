@@ -3,7 +3,7 @@ extends TextureRect
 # HexColPreviewSync... I must've been really sleepy while naming this
 class_name HexColPlate
 
-var parent : ColorPlate
+var parent # ColorPlate/ColorPlateCompat
 
 func _ready():
 	parent = get_parent()

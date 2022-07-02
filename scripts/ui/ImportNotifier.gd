@@ -5,13 +5,18 @@ class_name ImportNotifier
 # TODO: See if Yay and Yee in array is necessary, since the third entry already tries to indicate if import is succeeded or not.
 onready var noticeData = {
 	# [checkmark or X, status icon, is fail?]
-	# yay is success, yee is fail
+	# yay is success, yee is fail, whatTheFuck = ???
 	"shirt_success": [Preloader.statusnoticeYay, Preloader.statusnoticeShirt, false],
 	"pants_success": [Preloader.statusnoticeYay, Preloader.statusnoticePants, false],
 	"pantsies_success": [Preloader.statusnoticeYay, Preloader.statusnoticePantsies, false],
 	"fail": [Preloader.statusnoticeYee, Preloader.statusnoticeYuck, true],
-	"fail_storage": [Preloader.statusnoticeYee, Preloader.statusnoticeStorage, true]
+	"fail_storage": [Preloader.statusnoticeYee, Preloader.statusnoticeStorage, true],
+	"witch": [Preloader.statusnoticeWtf, Preloader.statusnoticeTofu, false],
+	"witch_deal": [Preloader.stasusnoticeThumbsUp, Preloader.statusnoticeTofu, false]
 }
+
+var currentNotice = ""
+var bobuxTime = false
 
 var is_tweening = false
 var is_shown = false
@@ -20,7 +25,7 @@ var max_stay_duration = 3
 var max_fail_stay_duration = 3
 
 #TODO: Correct time needed for the tween to perform.
-func submitNotice(noticeName):
+func submitNotice(noticeName, resetDuration = true):
 	var noticer = noticeData[noticeName]
 	
 	if !noticer:
@@ -28,6 +33,13 @@ func submitNotice(noticeName):
 	
 	$NoticeStatus.texture = noticer[0]
 	$NoticePic.texture = noticer[1]
+	currentNotice = noticeName
+	
+	if (noticeName == "witch"):
+		bobuxTime = true
+	
+	if !resetDuration:
+		return
 	
 	if !is_shown:
 		$Tween.stop_all()
@@ -61,3 +73,4 @@ func _process(dt):
 		$Tween.interpolate_property(self, "rect_position", rect_position, Vector2(-800, rect_position.y), 0.5, Tween.TRANS_QUAD, Tween.EASE_IN)
 		$Tween.start()
 		is_shown = false
+		bobuxTime = false

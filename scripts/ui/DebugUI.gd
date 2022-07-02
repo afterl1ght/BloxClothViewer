@@ -15,6 +15,6 @@ func _process(_dt):
 				versionName = "UNKNOWN (malfunctioned metadata?)"
 			print(versionName)
 			print(buildPhase)
-			$version.text = "Version " + str(versionName) + " (Build Phase " + str(buildPhase) + ")\nTEST BUILD. CHANGES WILL BE MADE. OBVIOUSLY."
+			$version.text = str(versionName) + " (Build Phase " + str(buildPhase) + ")"
 		else:
 			visible = false

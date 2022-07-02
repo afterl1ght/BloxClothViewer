@@ -27,7 +27,20 @@ onready var statusnoticePantsies = preload("res://appassets/texureassets/ui/stat
 onready var statusnoticeShirt = preload("res://appassets/texureassets/ui/statusNotice/statusnoticeShirt.png")
 onready var statusnoticeYuck = preload("res://appassets/texureassets/ui/statusNotice/statusnoticeYuck.png")
 onready var statusnoticeStorage = preload("res://appassets/texureassets/ui/statusNotice/statusnoticeStorage.png")
+# bobux time statusNotice
+onready var statusnoticeTofu = preload("res://appassets/texureassets/ui/statusNotice/statusnoticeTofu.png")
+onready var statusnoticeWtf = preload("res://appassets/texureassets/ui/statusNotice/statusnoticeWhatTheFuck.png")
+onready var stasusnoticeThumbsUp = preload("res://appassets/texureassets/ui/statusNotice/statusnoticeBobuxDealLmao.png")
+# bobux time extra assets
 
 # statusok and statuswarning icons for clothing texture status
 onready var statusok = preload("res://appassets/texureassets/ui/statusNotice/statusok.png")
 onready var statuswarning = preload("res://appassets/texureassets/ui/statusNotice/statuswarning.png")
+
+# checkbox
+onready var checkboxYes = preload("res://appassets/texureassets/ui/button/buttonCheckboxChecked.png")
+onready var checkboxNo = preload("res://appassets/texureassets/ui/button/buttonCheckboxUnchecked.png")
+
+# environment
+onready var worldenv = preload("res://default_env.tres")
+onready var procsky = preload("res://default_sky.tres")

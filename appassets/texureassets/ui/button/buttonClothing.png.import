@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/buttonUIVisibleButItsBobux.png-3ce73a21a0cb3c6a6ac72c46f2e62e1b.stex"
+path="res://.import/buttonClothing.png-5acd6037c1bee2c2259828fd4cbf5081.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://appassets/texureassets/ui/button/buttonUIVisibleButItsBobux.png"
-dest_files=[ "res://.import/buttonUIVisibleButItsBobux.png-3ce73a21a0cb3c6a6ac72c46f2e62e1b.stex" ]
+source_file="res://appassets/texureassets/ui/button/buttonClothing.png"
+dest_files=[ "res://.import/buttonClothing.png-5acd6037c1bee2c2259828fd4cbf5081.stex" ]
 
 [params]
 

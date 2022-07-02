@@ -7,7 +7,11 @@ signal valueBarDragged
 var isDragging = false
 var targetPos = Vector2.ZERO
 
-onready var parent : ColorPlate = get_parent()
+onready var parent = get_parent() # parent is ColorPlate/ColorPlateCompat
+
+func get_height_correction():
+	# clamped offset min/max backwards rect.y/4 from rect.y/2
+	return $Selection.rect_size.y/2 + $Selection.rect_size.y/4
 
 func get_drag_data(pos):
 	if (!isDragging):
@@ -25,7 +29,8 @@ func _input(event):
 	if event is InputEventScreenTouch and event.pressed:
 		if isWithinRect(event.position):
 			targetPos = event.position
-			$Selection.rect_position = Vector2($Selection.rect_position.x, clamp(targetPos.y - rect_global_position.y, 0, rect_size.y - $Selection.rect_size.y/2))
+			# remember to adjust get_height_correction() after change
+			$Selection.rect_position = Vector2($Selection.rect_position.x, clamp(targetPos.y - rect_global_position.y, -$Selection.rect_size.y/4, rect_size.y - 3*$Selection.rect_size.y/4))
 			tapped = true
 			#selection position height for value bar
 	if event is InputEventScreenTouch and event.pressed == false:
@@ -38,15 +43,17 @@ func drop_data(pos, data):
 	
 func get_value_height_scale():
 	var selection_height = $Selection.rect_position.y
-	return lerp(1, 0, selection_height / (rect_size.y - $Selection.rect_size.y/2))
+	return lerp(1, 0, selection_height / (rect_size.y - get_height_correction()))
 	
 func set_value_height_scale(zero_to_one):
-	$Selection.rect_position = Vector2($Selection.rect_position.x, (rect_size.y - $Selection.rect_size.y/2) * lerp(1, 0, zero_to_one))
+	$Selection.rect_position = Vector2($Selection.rect_position.x, (rect_size.y - get_height_correction()) * lerp(1, 0, zero_to_one))
 	
 func _process(_dt):
 	if isDragging:
 		# get drag height here
-		var selection_height = clamp(targetPos.y - rect_global_position.y, 0, rect_size.y - $Selection.rect_size.y/2)
+		# after adjusting clamp offset to make slider more accurate remember to adjust get_height_correction()
+		# just wanna make this fast so i can focus on my main project
+		var selection_height = clamp(targetPos.y - rect_global_position.y, -$Selection.rect_size.y/4, rect_size.y - 3*$Selection.rect_size.y/4)
 		$Selection.rect_position = Vector2($Selection.rect_position.x, selection_height)
 	
 	if isDragging or tapped:

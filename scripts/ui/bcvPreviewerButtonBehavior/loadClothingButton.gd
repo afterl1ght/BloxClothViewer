@@ -55,7 +55,7 @@ func _pressed():
 		requested = false
 		
 func _on_opposing_clothing_request():
-	# Seems like you're pants and shirt gets picked. This is to make sure they won't run in at the same time.
+	# Seem like you're pants and shirts gets picked. This was to make sure they willn't ran in at same time.
 	requested = false
 
 func _on_image_request_completed(dict):
@@ -82,17 +82,28 @@ func _on_image_request_completed(dict):
 			var texture = ImageTexture.new()
 			texture.create_from_image(image, 16)
 			
-			if isShirt:
-				blockmatshirt.albedo_texture = texture
-				importNotifier.submitNotice("shirt_success")
-			else:
-				blockmatpants.albedo_texture = texture
-				blockmatpantsHybrid.albedo_texture = texture
-				
-				if randf() > 0.95:
-					importNotifier.submitNotice("pantsies_success")
+			randomize()
+			if randf() > 0.975:
+				if isShirt:
+					blockmatshirt.albedo_texture = texture
 				else:
-					importNotifier.submitNotice("pants_success")
+					blockmatpants.albedo_texture = texture
+					blockmatpantsHybrid.albedo_texture = texture
+				
+				importNotifier.submitNotice("witch")
+			else:
+				if isShirt:
+					blockmatshirt.albedo_texture = texture
+					importNotifier.submitNotice("shirt_success")
+				else:
+					randomize()
+					blockmatpants.albedo_texture = texture
+					blockmatpantsHybrid.albedo_texture = texture
+					
+					if randf() > 0.95:
+						importNotifier.submitNotice("pantsies_success")
+					else:
+						importNotifier.submitNotice("pants_success")
 					
 			# after that, run some checks to see if the texture is eligible for uploading.
 			if texture.get_size() != Vector2(585, 559):

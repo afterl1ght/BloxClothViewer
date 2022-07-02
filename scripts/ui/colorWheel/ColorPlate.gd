@@ -88,14 +88,14 @@ func to_hsv(color: Color) -> Array:
 			
 	if (maxRGB != 0):
 		sat = float(diff)/maxRGB
-	return [(deg2rad(hue)+3*PI/2), sat, maxRGB] # hsv
+	return [(deg2rad(hue)), sat, maxRGB] # hsv
 
 func set_color_to_wheel(color):
 	# Calculate angle => position of the wheel selection point
 	var hsv = to_hsv(color)
-	var yOff = $Wheel.max_dist * tan(hsv[0])
+	var huereal = hsv[0] - PI/2 # hue value minus 90deg from positive x axis
 	# set selection position based on hsv
-	$Wheel/Selection.rect_position = $Wheel.middle + sign(5*PI/6 - (hsv[0] - 3*PI/2)) * Vector2($Wheel.max_dist, yOff).normalized() * ($Wheel.max_dist * hsv[1])
+	$Wheel/Selection.rect_position = $Wheel.middle + Vector2(cos(huereal), sin(huereal)).normalized() * ($Wheel.max_dist * hsv[1])
 	$ValueBar.set_value_height_scale(hsv[2])
 	
 func on_body_color_changed(val):

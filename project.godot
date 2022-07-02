@@ -19,6 +19,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/ui/bcvPreviewerButton.gd"
 }, {
+"base": "Control",
+"class": "BasicPhysicsObject2D",
+"language": "GDScript",
+"path": "res://scripts/ui/2DBasicPhysicsObject.gd"
+}, {
+"base": "TextureButton",
+"class": "CheckboxHitbox",
+"language": "GDScript",
+"path": "res://scripts/ui/CheckboxHitbox.gd"
+}, {
 "base": "BCVPreviewerButton",
 "class": "ClothingLoadButton",
 "language": "GDScript",
@@ -30,9 +40,24 @@ _global_script_classes=[ {
 "path": "res://scripts/ui/colorWheel/ColorPlate.gd"
 }, {
 "base": "Control",
+"class": "ColorPlateCompat",
+"language": "GDScript",
+"path": "res://scripts/ui/colorWheel/compat/ColorPlateCompat.gd"
+}, {
+"base": "Control",
 "class": "DebugUI",
 "language": "GDScript",
 "path": "res://scripts/ui/DebugUI.gd"
+}, {
+"base": "TextureButton",
+"class": "EditorButtonBehavior",
+"language": "GDScript",
+"path": "res://scripts/ui/EditorButtonBehavior.gd"
+}, {
+"base": "Control",
+"class": "EdutorButtons",
+"language": "GDScript",
+"path": "res://scripts/ui/EditorButtons.gd"
 }, {
 "base": "LineEdit",
 "class": "HexColEdit",
@@ -48,6 +73,21 @@ _global_script_classes=[ {
 "class": "ImportNotifier",
 "language": "GDScript",
 "path": "res://scripts/ui/ImportNotifier.gd"
+}, {
+"base": "Node",
+"class": "Matrix",
+"language": "GDScript",
+"path": "res://scripts/algorithm/Matrix.gd"
+}, {
+"base": "Control",
+"class": "Overlay",
+"language": "GDScript",
+"path": "res://scripts/ui/Overlay.gd"
+}, {
+"base": "TextureButton",
+"class": "PicHitbox",
+"language": "GDScript",
+"path": "res://scripts/ui/statusNotifierHitbox.gd"
 }, {
 "base": "Spatial",
 "class": "SkinModel",
@@ -77,12 +117,20 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "AvtSubButtons": "",
 "BCVPreviewerButton": "",
+"BasicPhysicsObject2D": "",
+"CheckboxHitbox": "",
 "ClothingLoadButton": "",
 "ColorPlate": "",
+"ColorPlateCompat": "",
 "DebugUI": "",
+"EditorButtonBehavior": "",
+"EdutorButtons": "",
 "HexColEdit": "",
 "HexColPlate": "",
 "ImportNotifier": "",
+"Matrix": "",
+"Overlay": "",
+"PicHitbox": "",
 "SkinModel": "",
 "SmolButts": "",
 "UIMain": "",
@@ -97,12 +145,15 @@ run/main_scene="res://MainView.tscn"
 boot_splash/image="res://akashiroSplash.png"
 boot_splash/bg_color=Color( 0.0745098, 0.0745098, 0.0745098, 1 )
 config/icon="res://icon.png"
-config/version_name="1.0.0-alpha30"
-config/build_phase=38
+config/version_name="1.0.0-beta1"
+config/build_phase=56
 
 [autoload]
 
+Globals="*res://scripts/Globals.gd"
 Preloader="*res://scripts/Preloader.gd"
+Math="*res://scripts/algorithm/Math.gd"
+EventOrganizer="*res://scripts/EventOrganizer.gd"
 
 [debug]
 
