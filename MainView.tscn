@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://robloxmodels/updatedBlockModels/r6/clothCompatBlockR6.obj" type="ArrayMesh" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://UIHelper.tscn" type="PackedScene" id=14]
 [ext_resource path="res://UIUpdate.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Overlay.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scripts/viewerMech/gridsquarebehavior.gd" type="Script" id=17]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -33,6 +34,7 @@ directionalLightPath = NodePath("../DirectionalLight")
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.5, -5.85 )
+current = true
 fov = 80.0
 script = ExtResource( 5 )
 
@@ -49,6 +51,7 @@ transform = Transform( 1, -1.04308e-07, 1.19209e-07, 2.98023e-08, 1, -2.98023e-0
 layers = 3
 mesh = ExtResource( 2 )
 skeleton = NodePath("../../..")
+software_skinning_transform_normals = false
 material/0 = ExtResource( 3 )
 material/1 = ExtResource( 11 )
 material/2 = ExtResource( 9 )
@@ -62,6 +65,7 @@ layers = 2
 cast_shadow = 2
 mesh = SubResource( 1 )
 material/0 = ExtResource( 6 )
+script = ExtResource( 17 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.994217, 0.00777725, -0.10711, -7.45058e-08, -0.997374, -0.07242, -0.107392, 0.0720012, -0.991606, 1.3857, 3.68235, -7.32788 )

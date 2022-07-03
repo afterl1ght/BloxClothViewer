@@ -97,9 +97,14 @@ func _input(event):
 
 func focus_entered():
 	is_focused = true
+	if uiMain:
+		uiMain.focusing_text_field = self
 
 func focus_exited():
 	is_focused = false
+	if uiMain:
+		if uiMain.focusing_text_field == self:
+			uiMain.focusing_text_field = null
 
 func text_changed(newtext):
 	text_changing = true
@@ -126,10 +131,3 @@ func text_changed(newtext):
 func _process(_delta):
 	if !afterready:
 		return
-	
-	# TODO: Change height position when virtual keyboard (non-floating state) exceeds the plate's height
-	if uiMain:
-		if is_focused: # Basically if the text field is focused
-			uiMain.focusing_text_field = self
-		else:
-			uiMain.focusing_text_field = null

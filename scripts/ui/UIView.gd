@@ -39,6 +39,10 @@ func _process(delta):
 		if y_bottom > y_keyboard:
 			ui_height_offset = y_keyboard - y_bottom
 	else:
+		if focusing_text_field == null and virtkeybh > 0:
+			# Text fields that are focused should be assigned to this variable, else the keyboard might not show up because of this condition
+			OS.hide_virtual_keyboard()
+			
 		ui_height_offset = 0
 		is_focused = false
 		focused_global_pos = Vector2.ZERO

@@ -10,7 +10,3 @@ vertex_color_is_srgb = true
 albedo_color = Color( 0.635294, 0.635294, 0.635294, 1 )
 albedo_texture = ExtResource( 1 )
 roughness = 0.75
-ao_enabled = true
-ao_light_affect = 1.0
-ao_on_uv2 = false
-ao_texture_channel = 0

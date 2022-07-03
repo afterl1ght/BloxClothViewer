@@ -1,7 +1,6 @@
 extends CheckboxHitbox
 
-# Checkbox for
-# + Automatic lighting color based on solid color skybox (assuming light color is white)
+# Checkbox for enabling/disabling lighting
 export(NodePath) var uimainpath
 onready var uimain : UIMain = get_node(uimainpath)
 
@@ -17,11 +16,17 @@ func _process(dt):
 			_on_unticked()
 
 func _on_ticked():
-	Preloader.worldenv.ambient_light_sky_contribution = 1
-	print("ticked")
+	if dlight:
+		dlight.visible = false
+	else:
+		._on_unticked()
+		return
 	._on_ticked()
 
 func _on_unticked():
-	Preloader.worldenv.ambient_light_sky_contribution = 0
-	print("unticked")
+	if dlight:
+		dlight.visible = true
+	else:
+		._on_ticked()
+		return
 	._on_unticked()

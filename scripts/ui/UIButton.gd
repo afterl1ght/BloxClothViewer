@@ -24,12 +24,14 @@ func _process(dt):
 		uiEnabled = !uiEnabled
 		
 	if !uiEnabled:
+		uiNode.pause_mode = Node.PAUSE_MODE_STOP
 		if currentFadeTime <= 0:
 			if uiNode:
 				uiNode.visible = false
 		else:
 			currentFadeTime -= dt
 	else:
+		uiNode.pause_mode = Node.PAUSE_MODE_INHERIT
 		if uiNode:
 			if !(uiNode.visible):
 				uiNode.visible = true

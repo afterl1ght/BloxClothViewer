@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://appassets/texureassets/ui/button/scribblybuttonShirt.png" type="Texture" id=1]
 [ext_resource path="res://appassets/texureassets/ui/button/scribblybuttonPants.png" type="Texture" id=2]
@@ -75,9 +75,12 @@
 [ext_resource path="res://scripts/ui/EditorButtonBehavior.gd" type="Script" id=73]
 [ext_resource path="res://appassets/texureassets/ui/button/buttonCheckboxChecked.png" type="Texture" id=74]
 [ext_resource path="res://appassets/texureassets/ui/button/buttonGridVisible.png" type="Texture" id=75]
-[ext_resource path="res://scripts/ui/checkboxHitboxBehavior/cbh_autolighting.gd" type="Script" id=76]
+[ext_resource path="res://scripts/ui/checkboxHitboxBehavior/cbh_togglelighting.gd" type="Script" id=76]
 [ext_resource path="res://scripts/ui/GridButton.gd" type="Script" id=77]
 [ext_resource path="res://scripts/ui/colorWheel/forLighting/ColorPlateLighting.gd" type="Script" id=78]
+[ext_resource path="res://scripts/ui/colorWheel/forBackground/ColorPlateBG.gd" type="Script" id=79]
+[ext_resource path="res://appassets/texureassets/ui/button/buttonCheckboxDisableLighting.png" type="Texture" id=80]
+[ext_resource path="res://scripts/ui/checkboxHitboxBehavior/cbh_ambientlighting.gd" type="Script" id=81]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -259,10 +262,12 @@ buttonType = 3
 associatedEditorPath = NodePath("../../BackgroundSettings")
 
 [node name="ClothLoaders" type="Control" parent="PreviewerUI"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -500.0
 mouse_filter = 2
+
+[node name="Tween" type="Tween" parent="PreviewerUI/ClothLoaders"]
 
 [node name="LoadShirt" type="TextureButton" parent="PreviewerUI/ClothLoaders"]
 anchor_top = 1.0
@@ -370,36 +375,10 @@ texture_normal = ExtResource( 41 )
 [node name="LightingSettings" type="Control" parent="PreviewerUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -500.0
 mouse_filter = 2
 
-[node name="AmbientCheckbox" type="TextureRect" parent="PreviewerUI/LightingSettings"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 12.0
-margin_top = -430.0
-margin_right = 108.0
-margin_bottom = -334.0
-rect_scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 74 )
-
-[node name="text" type="TextureRect" parent="PreviewerUI/LightingSettings/AmbientCheckbox"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 96.0
-margin_top = -48.0
-margin_right = 384.0
-margin_bottom = 48.0
-texture = ExtResource( 51 )
-
-[node name="hitbox" type="TextureButton" parent="PreviewerUI/LightingSettings/AmbientCheckbox"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 279.0
-toggle_mode = true
-script = ExtResource( 76 )
-ticked = false
-tickboxLocation = NodePath("..")
-uimainpath = NodePath("../../../..")
+[node name="Tween" type="Tween" parent="PreviewerUI/LightingSettings"]
 
 [node name="ColorPlateLighting" type="TextureRect" parent="PreviewerUI/LightingSettings"]
 anchor_top = 1.0
@@ -461,8 +440,6 @@ margin_right = 23.0
 margin_bottom = 23.0
 rect_pivot_offset = Vector2( 23, 23 )
 texture = ExtResource( 52 )
-
-[node name="Tween" type="Tween" parent="PreviewerUI/LightingSettings/ColorPlateLighting"]
 
 [node name="FakeConfigPlate" type="TextureRect" parent="PreviewerUI/LightingSettings/ColorPlateLighting"]
 show_behind_parent = true
@@ -532,115 +509,197 @@ custom_styles/normal = SubResource( 2 )
 text = " #"
 scroll_active = false
 
+[node name="LightDisableCheckbox" type="TextureRect" parent="PreviewerUI/LightingSettings"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = -430.0
+margin_right = 108.0
+margin_bottom = -334.0
+rect_scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 74 )
+
+[node name="text" type="TextureRect" parent="PreviewerUI/LightingSettings/LightDisableCheckbox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 96.0
+margin_top = -48.0
+margin_right = 384.0
+margin_bottom = 48.0
+texture = ExtResource( 80 )
+
+[node name="hitbox" type="TextureButton" parent="PreviewerUI/LightingSettings/LightDisableCheckbox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 232.0
+toggle_mode = true
+script = ExtResource( 76 )
+ticked = false
+tickboxLocation = NodePath("..")
+uimainpath = NodePath("../../../..")
+
 [node name="BackgroundSettings" type="Control" parent="PreviewerUI"]
-visible = false
-modulate = Color( 0.156863, 0.305882, 0.984314, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -500.0
 mouse_filter = 2
 
-[node name="LoadShirt" type="TextureButton" parent="PreviewerUI/BackgroundSettings"]
+[node name="Tween" type="Tween" parent="PreviewerUI/BackgroundSettings"]
+
+[node name="ColorPlateBG" type="TextureRect" parent="PreviewerUI/BackgroundSettings"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -355.0
+margin_right = 252.0
+margin_bottom = -113.0
+rect_pivot_offset = Vector2( 252, 0 )
+texture = ExtResource( 18 )
+flip_h = true
+script = ExtResource( 79 )
+
+[node name="Wheel" type="TextureRect" parent="PreviewerUI/BackgroundSettings/ColorPlateBG"]
+margin_left = 64.0
+margin_top = 12.0
+margin_right = 256.0
+margin_bottom = 204.0
+mouse_filter = 0
+texture = ExtResource( 49 )
+script = ExtResource( 53 )
+valueBarPath = NodePath("../ValueBar")
+
+[node name="Outline" type="TextureRect" parent="PreviewerUI/BackgroundSettings/ColorPlateBG/Wheel"]
+show_behind_parent = true
+margin_left = -7.75
+margin_top = -7.75
+margin_right = 201.25
+margin_bottom = 201.25
+texture = ExtResource( 50 )
+
+[node name="Selection" type="TextureRect" parent="PreviewerUI/BackgroundSettings/ColorPlateBG/Wheel"]
+margin_left = -24.0
+margin_top = 73.0
+margin_right = 22.0
+margin_bottom = 119.0
+rect_pivot_offset = Vector2( 23, 23 )
+mouse_filter = 2
+texture = ExtResource( 52 )
+
+[node name="ValueBar" type="TextureRect" parent="PreviewerUI/BackgroundSettings/ColorPlateBG"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -236.0
+margin_top = 5.0
+margin_right = -206.0
+margin_bottom = 209.0
+texture = ExtResource( 48 )
+script = ExtResource( 54 )
+
+[node name="Selection" type="TextureRect" parent="PreviewerUI/BackgroundSettings/ColorPlateBG/ValueBar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -23.0
+margin_top = -23.0
+margin_right = 23.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 23, 23 )
+texture = ExtResource( 52 )
+
+[node name="FakeConfigPlate" type="TextureRect" parent="PreviewerUI/BackgroundSettings/ColorPlateBG"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -86.0
+margin_top = -17.0
+margin_right = 166.0
+margin_bottom = 59.0
+rect_scale = Vector2( 1.25, 1.25 )
+rect_pivot_offset = Vector2( 252, 0 )
+texture = ExtResource( 27 )
+flip_h = true
+script = ExtResource( 59 )
+
+[node name="SquareUnderneath" type="TextureRect" parent="PreviewerUI/BackgroundSettings/ColorPlateBG/FakeConfigPlate"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 190.0
+margin_top = -64.0
+margin_right = 318.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 0, 64 )
+texture = ExtResource( 60 )
+
+[node name="HexColor" type="LineEdit" parent="PreviewerUI/BackgroundSettings/ColorPlateBG"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -76.0
+margin_top = -17.0
+margin_right = 124.0
+margin_bottom = 45.0
+rect_scale = Vector2( 1.25, 1.25 )
+rect_pivot_offset = Vector2( 100, 0 )
+custom_colors/selection_color = Color( 0.0980392, 0.0980392, 0.0980392, 0.784314 )
+custom_colors/font_color_selected = Color( 0.6, 0.6, 0.6, 1 )
+custom_fonts/font = ExtResource( 57 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 2 )
+text = "FFFFFF"
+max_length = 6
+context_menu_enabled = false
+caret_blink = true
+caret_blink_speed = 0.5
+script = ExtResource( 58 )
+uiMainPath = NodePath("../../../..")
+
+[node name="HexBegin" type="RichTextLabel" parent="PreviewerUI/BackgroundSettings/ColorPlateBG"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 167.0
+margin_top = -8.0
+margin_right = 367.0
+margin_bottom = 56.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 100, 0 )
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 57 )
+custom_styles/normal = SubResource( 2 )
+text = " #"
+scroll_active = false
+
+[node name="AmbientCheckbox" type="TextureRect" parent="PreviewerUI/BackgroundSettings"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 12.0
-margin_top = -396.0
-margin_right = 204.0
-margin_bottom = -204.0
-rect_pivot_offset = Vector2( 96, 96 )
-texture_normal = ExtResource( 1 )
-script = ExtResource( 22 )
-uiMainPath = NodePath("../../..")
-isShirt = true
-opposingClothingButtonPath = NodePath("../LoadPants")
-importNotifierPath = NodePath("../../Notifier")
+margin_top = -430.0
+margin_right = 108.0
+margin_bottom = -334.0
+rect_scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 74 )
 
-[node name="Visible" type="TextureButton" parent="PreviewerUI/BackgroundSettings/LoadShirt"]
-margin_right = 96.0
-margin_bottom = 96.0
-rect_scale = Vector2( 0.75, 0.75 )
+[node name="text" type="TextureRect" parent="PreviewerUI/BackgroundSettings/AmbientCheckbox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 96.0
+margin_top = -48.0
+margin_right = 384.0
+margin_bottom = 48.0
+texture = ExtResource( 51 )
+
+[node name="hitbox" type="TextureButton" parent="PreviewerUI/BackgroundSettings/AmbientCheckbox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 279.0
 toggle_mode = true
-texture_normal = ExtResource( 19 )
-texture_pressed = ExtResource( 23 )
-script = ExtResource( 24 )
-
-[node name="Status" type="TextureButton" parent="PreviewerUI/BackgroundSettings/LoadShirt"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -84.0
-margin_top = -84.0
-margin_right = 12.0
-margin_bottom = 12.0
-rect_pivot_offset = Vector2( 96, 96 )
-mouse_filter = 2
-texture_normal = ExtResource( 45 )
-script = ExtResource( 47 )
-
-[node name="bubble" type="TextureButton" parent="PreviewerUI/BackgroundSettings/LoadShirt/Status"]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -192.0
-margin_right = 500.0
-rect_pivot_offset = Vector2( 0, 192 )
-texture_normal = ExtResource( 41 )
-
-[node name="Tween" type="Tween" parent="PreviewerUI/BackgroundSettings/LoadShirt/Status/bubble"]
-
-[node name="LoadPants" type="TextureButton" parent="PreviewerUI/BackgroundSettings"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 12.0
-margin_top = -204.0
-margin_right = 204.0
-margin_bottom = -12.0
-rect_pivot_offset = Vector2( 96, 96 )
-texture_normal = ExtResource( 2 )
-script = ExtResource( 22 )
-uiMainPath = NodePath("../../..")
-opposingClothingButtonPath = NodePath("../LoadShirt")
-importNotifierPath = NodePath("../../Notifier")
-
-[node name="Visible" type="TextureButton" parent="PreviewerUI/BackgroundSettings/LoadPants"]
-margin_right = 96.0
-margin_bottom = 96.0
-rect_scale = Vector2( 0.75, 0.75 )
-toggle_mode = true
-texture_normal = ExtResource( 19 )
-texture_pressed = ExtResource( 23 )
-script = ExtResource( 24 )
-
-[node name="Status" type="TextureButton" parent="PreviewerUI/BackgroundSettings/LoadPants"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -84.0
-margin_top = -84.0
-margin_right = 12.0
-margin_bottom = 12.0
-rect_pivot_offset = Vector2( 96, 96 )
-mouse_filter = 2
-texture_normal = ExtResource( 45 )
-script = ExtResource( 47 )
-
-[node name="bubble" type="TextureButton" parent="PreviewerUI/BackgroundSettings/LoadPants/Status"]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -192.0
-margin_right = 500.0
-rect_pivot_offset = Vector2( 0, 192 )
-texture_normal = ExtResource( 41 )
-
-[node name="Tween" type="Tween" parent="PreviewerUI/BackgroundSettings/LoadPants/Status/bubble"]
+script = ExtResource( 81 )
+tickboxLocation = NodePath("..")
 
 [node name="AvtSubButtons" type="Control" parent="PreviewerUI"]
 anchor_right = 1.0

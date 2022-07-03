@@ -44,3 +44,6 @@ onready var checkboxNo = preload("res://appassets/texureassets/ui/button/buttonC
 # environment
 onready var worldenv = preload("res://default_env.tres")
 onready var procsky = preload("res://default_sky.tres")
+
+# grid
+onready var gridmat = preload("res://appassets/materialassets/gridsquareFloor.tres")

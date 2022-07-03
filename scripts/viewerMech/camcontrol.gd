@@ -1,7 +1,7 @@
 extends Camera
 
 const ORIGINAL_FOV = 80
-const MIN_FOV = 30
+const MIN_FOV = 20
 const MAX_FOV = 120
 const MAX_CORRECTION_FOV = 80
 var currentfov = 80 setget setfov
