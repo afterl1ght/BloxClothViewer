@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=2]
+[gd_scene load_steps=103 format=2]
 
 [ext_resource path="res://appassets/texureassets/ui/button/scribblybuttonShirt.png" type="Texture" id=1]
 [ext_resource path="res://appassets/texureassets/ui/button/scribblybuttonPants.png" type="Texture" id=2]
@@ -81,6 +81,7 @@
 [ext_resource path="res://scripts/ui/colorWheel/forBackground/ColorPlateBG.gd" type="Script" id=79]
 [ext_resource path="res://appassets/texureassets/ui/button/buttonCheckboxDisableLighting.png" type="Texture" id=80]
 [ext_resource path="res://scripts/ui/checkboxHitboxBehavior/cbh_ambientlighting.gd" type="Script" id=81]
+[ext_resource path="res://addons/native_dialogs/bin/native_dialog_open_file.gdns" type="Script" id=82]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -284,6 +285,11 @@ isShirt = true
 opposingClothingButtonPath = NodePath("../LoadPants")
 importNotifierPath = NodePath("../../Notifier")
 
+[node name="open" type="Node" parent="PreviewerUI/ClothLoaders/LoadShirt"]
+script = ExtResource( 82 )
+title = "Select shirt texture"
+filters = PoolStringArray( "*.png, *.jpg, *.jpeg ; (*.png, *.jpg, *.jpeg) Recommended Image Format", "*.png, *.jpg, *.jpeg, *.bmp, *.webp, *.hdr, *.exr, *.tga ; (*.png, *.jpg, *.jpeg, *.bmp, *.webp, *.hdr, *.exr, *.tga) Valid Image File", "* ; All Files" )
+
 [node name="Visible" type="TextureButton" parent="PreviewerUI/ClothLoaders/LoadShirt"]
 margin_right = 96.0
 margin_bottom = 96.0
@@ -334,6 +340,11 @@ script = ExtResource( 22 )
 uiMainPath = NodePath("../../..")
 opposingClothingButtonPath = NodePath("../LoadShirt")
 importNotifierPath = NodePath("../../Notifier")
+
+[node name="open" type="Node" parent="PreviewerUI/ClothLoaders/LoadPants"]
+script = ExtResource( 82 )
+title = "Select pants texture"
+filters = PoolStringArray( "*.png, *.jpg, *.jpeg ; Recommended Image Format", "*.png, *.jpg, *.jpeg, *.bmp, *.webp, *.hdr, *.exr, *.tga ; Valid Image File", "* ; All Files" )
 
 [node name="Visible" type="TextureButton" parent="PreviewerUI/ClothLoaders/LoadPants"]
 margin_right = 96.0

@@ -75,6 +75,9 @@ func _unhandled_input(event):
 func _input(event):
 	if !afterready:
 		return
+		
+	if !is_visible_in_tree(): # using isWithinRect, so use this if the object is not visible.
+		return
 	
 	if event and event is InputEventScreenDrag:
 		prevent_enable_input = true

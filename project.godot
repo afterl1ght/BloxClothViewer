@@ -105,6 +105,11 @@ _global_script_classes=[ {
 "path": "res://scripts/ui/UIView.gd"
 }, {
 "base": "Control",
+"class": "UpdateUI",
+"language": "GDScript",
+"path": "res://scripts/VersionChecker.gd"
+}, {
+"base": "Control",
 "class": "ValueBar",
 "language": "GDScript",
 "path": "res://scripts/ui/colorWheel/ColValueBar.gd"
@@ -134,6 +139,7 @@ _global_script_class_icons={
 "SkinModel": "",
 "SmolButts": "",
 "UIMain": "",
+"UpdateUI": "",
 "ValueBar": "",
 "WheelColor": ""
 }
@@ -146,8 +152,9 @@ run/low_processor_mode=true
 boot_splash/image="res://akashiroSplash.png"
 boot_splash/bg_color=Color( 0.0745098, 0.0745098, 0.0745098, 1 )
 config/icon="res://icon.png"
+config/windows_native_icon="res://bloxattire.ico"
 config/version_name="1.0.0-beta1"
-config/build_phase=58
+config/build_phase=60
 
 [autoload]
 
@@ -166,9 +173,14 @@ settings/fps/force_fps=60
 window/size/width=720
 window/size/height=1080
 window/dpi/allow_hidpi=true
+window/energy_saving/keep_screen_on=false
 window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/native_dialogs/plugin.cfg" )
 
 [input]
 
@@ -188,10 +200,13 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-quality/directional_shadow/size=2048
-quality/directional_shadow/size.mobile=1024
-quality/shadow_atlas/size=2048
-quality/shadow_atlas/size.mobile=1024
+quality/directional_shadow/size=256
+quality/directional_shadow/size.mobile=256
+quality/shadow_atlas/size=256
+quality/shadow_atlas/size.mobile=256
+quality/shadow_atlas/cubemap_size=256
+quality/reflections/texture_array_reflections=false
+quality/reflections/high_quality_ggx=false
 quality/shading/use_physical_light_attenuation=true
 quality/lightmapping/use_bicubic_sampling=false
 quality/subsurface_scattering/quality=0

@@ -4,17 +4,21 @@ extends Node
 onready var invisibleMat = preload("res://robloxmodels/mat/invisible.tres")
 
 # block r6 materials
-onready var blockmatArms6 = preload("res://robloxmodels/mat/blockmat6/blockmatArms6.tres")
-onready var blockmatArmsRight6 = preload("res://robloxmodels/mat/blockmat6/blockmatArmsRight6.tres")
-onready var blockmatBody6 = preload("res://robloxmodels/mat/blockmat6/blockmatBody6.tres")
-onready var blockmatHead6 = preload("res://robloxmodels/mat/blockmat6/blockmatHead6.tres")
-onready var blockmatLegs6 = preload("res://robloxmodels/mat/blockmat6/blockmatLegs6.tres")
-onready var blockmatLegsRight6 = preload("res://robloxmodels/mat/blockmat6/blockmatLegsRight6.tres")
+onready var blockmatArms6 = preload("res://robloxmodels/mat/blockmat6/shaderres/materialArmLeft.tres")
+onready var blockmatArmsRight6 = preload("res://robloxmodels/mat/blockmat6/shaderres/materialArmRight.tres")
+onready var blockmatBody6 = preload("res://robloxmodels/mat/blockmat6/shaderres/materialClothing.tres")
+onready var blockmatHead6 = preload("res://robloxmodels/mat/blockmat6/shaderres/materialHead.tres")
+onready var blockmatLegs6 = preload("res://robloxmodels/mat/blockmat6/shaderres/materialLegLeft.tres")
+onready var blockmatLegsRight6 = preload("res://robloxmodels/mat/blockmat6/shaderres/materialLegRight.tres")
 
 # clothing materials
-onready var blockmatpants = preload("res://robloxmodels/mat/blockmat6/blockmatpants.tres")
-onready var blockmatpantsHybrid = preload("res://robloxmodels/mat/blockmat6/blockmatpantsHybrid.tres")
-onready var blockmatshirt = preload("res://robloxmodels/mat/blockmat6/blockmatshirt.tres")
+const CLOTHING_TEXTURE = "texture_clothing"
+const SHIRT_TEXTURE = "texture_shirt"
+const PANTS_TEXTURE = "texture_pants"
+onready var blockmatpants = preload("res://robloxmodels/mat/blockmat6/shaderres/materialPants.tres")
+onready var blockmatpantsHybrid = preload("res://robloxmodels/mat/blockmat6/shaderres/materialClothing.tres")
+onready var blockmatClothing = preload("res://robloxmodels/mat/blockmat6/shaderres/materialClothing.tres")
+onready var blockmatshirt = preload("res://robloxmodels/mat/blockmat6/shaderres/materialShirt.tres")
 
 # statusNotice
 # check and X
@@ -47,3 +51,6 @@ onready var procsky = preload("res://default_sky.tres")
 
 # grid
 onready var gridmat = preload("res://appassets/materialassets/gridsquareFloor.tres")
+
+# texture atlases
+onready var versionTypeAtlas = preload("res://appassets/texureassets/misc/atlas_versionType.atlastex")

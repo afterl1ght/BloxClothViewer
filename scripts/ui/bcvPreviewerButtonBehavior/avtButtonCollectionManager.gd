@@ -161,7 +161,7 @@ func changeBodyPartColor(partIndex : int, color : Color):
 	
 	if (blockModel and bodyPartInfo[blockModel.name]):
 		bodyPartInfo[blockModel.name][partIndex][1] = color # Is this necessary??
-		bodyPartInfo[blockModel.name][partIndex][3].albedo_color = color
+		bodyPartInfo[blockModel.name][partIndex][3].set_shader_param("albedo", color)
 
 func changeCurrentBodyPartColor(color : Color):
 	var blockModel : MeshInstance = getCurrentBlockModel()
@@ -175,7 +175,7 @@ func getBodyPartColor(partIndex : int):
 	var blockModel : MeshInstance = getCurrentBlockModel()
 	
 	if (blockModel and bodyPartInfo[blockModel.name]):
-		return bodyPartInfo[blockModel.name][partIndex][3].albedo_color
+		return bodyPartInfo[blockModel.name][partIndex][3].get_shader_param("albedo")
 	
 	return null
 

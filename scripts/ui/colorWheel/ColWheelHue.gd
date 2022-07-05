@@ -37,6 +37,9 @@ func isWithinRect(pos):
 
 var tapped = false
 func _input(event):
+	if !is_visible_in_tree():
+		return
+	
 	if event is InputEventScreenTouch and event.pressed:
 		if isWithinRect(event.position):
 			targetPos = event.position

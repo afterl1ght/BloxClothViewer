@@ -24,6 +24,11 @@ var limvoff = 1
 var currentRadius := -1
 var currentCenter := Vector2.ZERO
 
+var mouseWheelZoomRate := 100
+var mousePosBefore := Vector2.ZERO # Use for moving mouse around
+var mouseWheelPressing := false
+var mouseWheelClickEvent
+
 var unhandled_dragged = false
 
 func _ready():
@@ -51,6 +56,14 @@ func see_pinch():
 	currentRadius = holdingRadius
 	currentCenter = holdingCenter
 
+func see_mousemid_movement():
+	var mousePosNow = get_viewport().get_mouse_position()
+	h_offset += (mousePosBefore.x - mousePosNow.x) * lerp(0.0025, 0.01, (currentfov - MIN_FOV) / (MAX_FOV - MIN_FOV))
+	v_offset -= (mousePosBefore.y - mousePosNow.y) * lerp(0.0025, 0.01, (currentfov - MIN_FOV) / (MAX_FOV - MIN_FOV))
+	h_offset = clamp(h_offset, -limhoff, limhoff)
+	v_offset = clamp(v_offset, -limvoff, limvoff)
+	mousePosBefore = mousePosNow
+
 func zoomcam(rate: int):
 	self.currentfov += rate * 0.05
 	self.currentfov = clamp(currentfov, MIN_FOV, MAX_FOV)
@@ -60,6 +73,26 @@ func _unhandled_input(event: InputEvent) -> void:
 		unhandled_dragged = true
 	if event is InputEventScreenTouch and !(event.pressed):
 		unhandled_dragged = false
+		
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			# zoom in
+			if event.button_index == BUTTON_WHEEL_UP:
+				zoomcam(-mouseWheelZoomRate)
+			# zoom out
+			if event.button_index == BUTTON_WHEEL_DOWN:
+				zoomcam(mouseWheelZoomRate)
+			if event.button_index == BUTTON_MIDDLE:
+				if (!mouseWheelPressing):
+					# Just entered camera movin state (works similarly to the one above but with a mouse instead)
+					mousePosBefore = event.position
+					mouseWheelClickEvent = event
+					mouseWheelPressing = true
+					
+		else:
+			if event.button_index == BUTTON_MIDDLE:
+				mouseWheelPressing = false
+				mouseWheelClickEvent = null
 
 func _input(event) -> void:
 	if event is InputEventScreenTouch and event.pressed == true:
@@ -70,7 +103,10 @@ func _input(event) -> void:
 		touches[event.index]["current"] = event
 
 func _process(_dt):
-	see_pinch()
+	if !mouseWheelPressing:
+		see_pinch()
+	else:
+		see_mousemid_movement()
 	
 	# Adjust camera FOV to adapt to screen resolution. May drastically change perspective in super narrow devices (?)
 	var rectsize = get_viewport().size
