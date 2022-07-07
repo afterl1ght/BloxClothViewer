@@ -4,7 +4,7 @@
 <h1 align="center">BloxClothViewer (Bloxattire)</h1>
 
 <p align="center">
-Latest: v1.0.0-betapatch1 BP61
+Latest: v1.0.0-b2 BP64
 </p>
 
 An Android app (later ported to Windows) that allows previewing classic Shirts and Pants for Roblox, making sure they match and seamless.
@@ -20,6 +20,7 @@ Made while eating tofu so everything's all in light mode, please beware.
 - Cool and slightly infuriating grid
 - cat girl
 - Color picker to customize scene and character model
+- *Very cool outline*
 - Does not give bobux
 
 # Requirements
