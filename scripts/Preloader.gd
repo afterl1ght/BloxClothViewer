@@ -52,5 +52,10 @@ onready var procsky = preload("res://default_sky.tres")
 # grid
 onready var gridmat = preload("res://appassets/materialassets/gridsquareFloor.tres")
 
+# fake sky
+onready var fakeskymat = preload("res://appassets/materialassets/FakeSky.tres")
+
+onready var outlinemat = preload("res://appassets/materialassets/outline.material")
+
 # texture atlases
 onready var versionTypeAtlas = preload("res://appassets/texureassets/misc/atlas_versionType.atlastex")

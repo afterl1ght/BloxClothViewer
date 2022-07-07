@@ -8,3 +8,4 @@ ground_horizon_color = Color( 0.160784, 0.160784, 0.160784, 1 )
 sun_color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
 sun_latitude = -136.37
 sun_angle_min = 0.0
+texture_size = 0

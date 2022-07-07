@@ -4,6 +4,10 @@ class_name ValueBar
 
 signal valueBarDragged
 
+signal drag_started
+signal drag_released
+signal tapped
+
 var isDragging = false
 var targetPos = Vector2.ZERO
 
@@ -51,7 +55,17 @@ func get_value_height_scale():
 func set_value_height_scale(zero_to_one):
 	$Selection.rect_position = Vector2($Selection.rect_position.x, (rect_size.y - get_height_correction()) * lerp(1, 0, zero_to_one))
 	
+var previouslyDragged = false
 func _process(_dt):
+	var drag_released_fired = false
+	if previouslyDragged != isDragging:
+		if isDragging:
+			if !tapped:
+				emit_signal("drag_started")
+		else:
+			drag_released_fired = true
+			emit_signal("drag_released")
+	
 	if isDragging:
 		# get drag height here
 		# after adjusting clamp offset to make slider more accurate remember to adjust get_height_correction()
@@ -61,7 +75,12 @@ func _process(_dt):
 	
 	if isDragging or tapped:
 		emit_signal("valueBarDragged")
-		tapped = false
+		if tapped:
+			if !drag_released_fired:
+				emit_signal("tapped")
+			tapped = false
 	
 	var targetColor = Color.white * get_value_height_scale()
 	$Selection.modulate = Color(targetColor.r, targetColor.g, targetColor.b, $Selection.modulate.a)
+	
+	previouslyDragged = isDragging

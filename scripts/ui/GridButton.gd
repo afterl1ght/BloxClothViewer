@@ -8,20 +8,15 @@ var gridEnabled = true
 
 var gridsquare : MeshInstance
 
-func _pressed():
-	isPressed = true
-	if !gridEnabled:
+func _ready():
+	if gridEnabled:
 		modulate.a = 1
 	else:
 		modulate.a = 0.25
 
-func _process(dt):
-	var justSwitched = false
-	if isPressed:
-		justSwitched = true
-		isPressed = false
-		gridEnabled = !gridEnabled
-		
+func _pressed():
+	gridEnabled = !gridEnabled
+	
 	if !uiMain:
 		return
 	else:
@@ -35,3 +30,8 @@ func _process(dt):
 					
 		
 	gridsquare.visible = gridEnabled
+	
+	if gridEnabled:
+		modulate.a = 1
+	else:
+		modulate.a = 0.25

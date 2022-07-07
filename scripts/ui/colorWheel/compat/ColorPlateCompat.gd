@@ -10,6 +10,14 @@ signal on_color_changed(newColor)
 var selectedColor = Color.white setget set_color
 var postready = false
 
+func _ready():
+	$Wheel.connect("drag_started", self, "hue_drag_started")
+	$Wheel.connect("drag_released", self, "hue_drag_released")
+	$Wheel.connect("tapped", self, "hue_tapped")
+	$ValueBar.connect("drag_started", self, "value_drag_started")
+	$ValueBar.connect("drag_released", self, "value_drag_released")
+	$ValueBar.connect("tapped", self, "value_tapped")
+
 func do_post_ready():
 	pass
 
@@ -17,6 +25,7 @@ func _process(_dt):
 	if !postready:
 		postready = true
 		do_post_ready()
+		set_process(false)
 
 func to_hsv(color: Color) -> Array:
 	var minRGB = min(color.r, min(color.g, color.b))
@@ -60,3 +69,21 @@ func set_color_to_wheel(color):
 func set_color(val):
 	selectedColor = val
 	emit_signal("on_color_changed", val)
+
+func hue_tapped():
+	pass
+
+func value_tapped():
+	pass
+	
+func hue_drag_started():
+	pass
+	
+func hue_drag_released():
+	pass
+	
+func value_drag_started():
+	pass
+	
+func value_drag_released():
+	pass

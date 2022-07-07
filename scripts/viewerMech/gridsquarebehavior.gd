@@ -6,11 +6,7 @@ func lumacheck(col : Color):
 	var kg = 0.587 
 	var kb = 0.114
 	var y = sqrt(kr*col.r*col.r + kg*col.g*col.g + kb*col.b*col.b)
-	return (y > 0.5)
+	return y#(y > 0.51)
 
 func _process(_dt):
-	if lumacheck(Preloader.procsky.sky_top_color):
-		# it's bright here, turn the grid darker
-		Preloader.gridmat.albedo_color = Color(0.1,0.1,0.1,0.5)
-	else:
-		Preloader.gridmat.albedo_color = Color(1,1,1,0.1)
+	Preloader.gridmat.albedo_color = lerp(Color(1,1,1,0.1),Color(0.1,0.1,0.1,0.5),min(lerp(0, 2, lumacheck(Preloader.fakeskymat.get_shader_param("albedo"))), 1))

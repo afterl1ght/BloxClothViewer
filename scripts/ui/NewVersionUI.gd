@@ -68,9 +68,7 @@ func noFunc():
 
 func update_appearance(v):
 	rect_position.y = v * (1440 * get_viewport().size.y / base_width) + (1-v) * (get_viewport().size.y/2 - rect_size.y/4)
-	print(get_viewport().size)
 	if v != 1 and v != -1:
 		visible = true
 	else:
 		visible = false
-		print("going deep...")

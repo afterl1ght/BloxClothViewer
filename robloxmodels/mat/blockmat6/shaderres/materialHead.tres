@@ -1,9 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
 
 [ext_resource path="res://robloxmodels/updatedBlockModels/Dummyr61_fulldiff.png" type="Texture" id=1]
 [ext_resource path="res://robloxmodels/mat/blockmat6/shaders/shd_head.shader" type="Shader" id=2]
+[ext_resource path="res://appassets/materialassets/outline.material" type="Material" id=3]
 
 [resource]
+next_pass = ExtResource( 3 )
 shader = ExtResource( 2 )
 shader_param/albedo = Color( 0.635294, 0.635294, 0.635294, 1 )
 shader_param/roughness = 0.75

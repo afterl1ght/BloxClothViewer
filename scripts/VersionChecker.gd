@@ -19,10 +19,32 @@ var version_name = ""
 
 const version_search_key = "([^v-]*)-([^-0-9]*)(\\d*)" # using tags from releases
 const version_type_atlas_location = { # entry: [rect2, xmargin]
-	"beta": [Rect2(50, 0, 110, 50),0],
-	"alpha": [Rect2(48, 57, 127, 43),0],
-	"release": [Rect2(23, 109, 179, 51),-30],
-	"patch": [Rect2(48, 165, 131, 40),-5]
+	"beta": [Rect2(50, 0, 110, 50),0,"b"],
+	"alpha": [Rect2(48, 57, 127, 43),0,"a"],
+	"release": [Rect2(23, 109, 179, 51),-30,""],
+	"patch": [Rect2(48, 165, 131, 40),-5,"f"], # stands for fix, for emergency fixes, too lazy to update font
+	"betapatch": [Rect2(48, 165, 131, 40),-5,"bf"],
+	"alphapatch": [Rect2(48, 165, 131, 40),-5,"af"],
+	
+	"b": [Rect2(50, 0, 110, 50),0,"b"],
+	"a": [Rect2(48, 57, 127, 43),0,"a"],
+	"f": [Rect2(48, 165, 131, 40),-5,"f"],
+	"bf": [Rect2(48, 165, 131, 40),-5,"bf"],
+	"af": [Rect2(48, 165, 131, 40),-5,"af"],
+}
+const version_type_fullname = {
+	"beta": "beta",
+	"alpha": "alpha",
+	"release": "release",
+	"patch": "patch",
+	"betapatch": "betapatch",
+	"alphapatch": "alphapatch",
+	
+	"b": "beta",
+	"a": "alpha",
+	"f": "patch",
+	"bf": "betapatch",
+	"af": "alphapatch",
 }
 
 func _ready():
@@ -64,19 +86,21 @@ func new_update_notif_active(v):
 		$NewUpdate/Tween.interpolate_method($NewUpdate, "update_appearance", 1, 0, 0.5, 10, 0)
 		$NewUpdate/Tween.start()
 
-func notify_update(versionNumber, versionType, buildPhase, isPrerelease, releaseUrl):
+func notify_update(versionNumber, versionType, versionStage, isPrerelease, releaseUrl):
+	var suffix = ""
 	var vType = "patch" #default
-	if (!isPrerelease):
+	if (!isPrerelease and versionType != "patch" and versionType != "f"):
 		vType = "release"
 	else:
-		if (version_type_atlas_location[versionType]):
+		if versionType in version_type_atlas_location:
 			vType = versionType
+			suffix = version_type_atlas_location[vType][2] + str(versionStage)
 	if !Preloader.versionTypeAtlas:
 		return
 	
 	Preloader.versionTypeAtlas.region = version_type_atlas_location[vType][0]
 	Preloader.versionTypeAtlas.margin = Rect2(version_type_atlas_location[vType][1], 0, 0, 0)
-	$NewVersionUI/VersionNumber.text = versionNumber
+	$NewVersionUI/VersionNumber.text = versionNumber + suffix
 	if releaseUrl:
 		$NewVersionUI.newReleaseLink = releaseUrl
 	
@@ -112,7 +136,8 @@ func _on_request_completed(result, response_code, headers, body):
 				# start looping through array of current releases
 				if release is Dictionary:
 					if release["tag_name"]:
-						if release["tag_name"] == version_name:
+						print(release["tag_name"])
+						if release["tag_name"] == ("v" + version_name):
 							# You would most likely not encounter this tag if the current release is latest.
 							break
 						if (!is_release) or (is_release and not release["prerelease"]):
@@ -122,10 +147,22 @@ func _on_request_completed(result, response_code, headers, body):
 							regex.compile(version_search_key)
 							var version_data = regex.search(release["tag_name"])
 							if version_data:
-								if version_data.get_group_count() >= 3:
-									print("update available")
-									notify_update(version_data.get_string(1), version_data.get_string(2), version_data.get_string(3), release["prerelease"], release["html_url"])
-									break
+								if version_data.get_group_count() >= 2:
+									# Check if it's the same version (with different name identifications)
+									if version_data.get_group_count() >= 3:
+										if (version_data.get_string(2) in version_type_atlas_location): # if get_string(2) is in atlas location dictionary -> it's also in version_type_fullname
+											# this hideous version naming convention should be kept unchanged for now
+											if ( version_name == (version_data.get_string(1) + version_data.get_string(2) + version_data.get_string(3)) ) or ( version_name == (version_data.get_string(1) + version_type_fullname[version_data.get_string(2)] + version_data.get_string(3)) ):
+												continue
+										print("update available")
+										notify_update(version_data.get_string(1), version_data.get_string(2), version_data.get_string(3), release["prerelease"], release["html_url"])
+										break
+									else:
+										if ( version_name == (version_data.get_string(1) + version_data.get_string(2)) ) or ( version_name == (version_data.get_string(1) + version_type_fullname[version_data.get_string(2)]) ):
+											continue
+										print("update available")
+										notify_update(version_data.get_string(1), version_data.get_string(2), "1", release["prerelease"], release["html_url"])
+										break
 								else:
 									continue
 							else:

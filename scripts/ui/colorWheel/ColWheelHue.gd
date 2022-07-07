@@ -3,6 +3,10 @@ extends Control
 # This actually manages the whole coloring system unlike their parent
 class_name WheelColor
 
+signal drag_started
+signal drag_released
+signal tapped
+
 var isDragging = false
 var targetPos = Vector2.ZERO
 
@@ -53,7 +57,17 @@ func _input(event):
 func drop_data(pos, data):
 	isDragging = false
 
+var previouslyDragged = false
 func _process(_dt):
+	var drag_released_fired = false
+	if previouslyDragged != isDragging:
+		if isDragging:
+			if !tapped:
+				emit_signal("drag_started")
+		else:
+			drag_released_fired = true
+			emit_signal("drag_released")
+	
 	if isDragging:
 		var newPosition = (targetPos - rect_global_position) - $Selection.rect_size/2
 		
@@ -72,7 +86,10 @@ func _process(_dt):
 	
 	if isDragging or tapped:
 		parent.selectedColor = selectedColor
-		tapped = false
+		if tapped:
+			if !drag_released_fired:
+				emit_signal("tapped")
+			tapped = false
 	
 	$Selection.modulate = selectedColor
 	
@@ -80,3 +97,5 @@ func _process(_dt):
 		var valueBar = parent.get_node("ValueBar")
 		if valueBar:
 			valueBar.modulate = result_color_noValue
+			
+	previouslyDragged = isDragging

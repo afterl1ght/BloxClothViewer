@@ -153,8 +153,8 @@ boot_splash/image="res://akashiroSplash.png"
 boot_splash/bg_color=Color( 0.0745098, 0.0745098, 0.0745098, 1 )
 config/icon="res://icon.png"
 config/windows_native_icon="res://bloxattire.ico"
-config/version_name="1.0.0-beta1"
-config/build_phase=60
+config/version_name="1.0.0-b2"
+config/build_phase=64
 
 [autoload]
 
