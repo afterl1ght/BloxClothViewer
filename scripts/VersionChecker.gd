@@ -33,12 +33,12 @@ const version_type_atlas_location = { # entry: [rect2, xmargin]
 	"af": [Rect2(48, 165, 131, 40),-5,"af"],
 }
 const version_type_fullname = {
-	"beta": "beta",
-	"alpha": "alpha",
+	"beta": "b",
+	"alpha": "a",
 	"release": "release",
-	"patch": "patch",
-	"betapatch": "betapatch",
-	"alphapatch": "alphapatch",
+	"patch": "f",
+	"betapatch": "bf",
+	"alphapatch": "af",
 	
 	"b": "beta",
 	"a": "alpha",
@@ -152,15 +152,17 @@ func _on_request_completed(result, response_code, headers, body):
 									if version_data.get_group_count() >= 3:
 										if (version_data.get_string(2) in version_type_atlas_location): # if get_string(2) is in atlas location dictionary -> it's also in version_type_fullname
 											# this hideous version naming convention should be kept unchanged for now
-											if ( version_name == (version_data.get_string(1) + version_data.get_string(2) + version_data.get_string(3)) ) or ( version_name == (version_data.get_string(1) + version_type_fullname[version_data.get_string(2)] + version_data.get_string(3)) ):
-												continue
-										print("update available")
+											if ( version_name == (version_data.get_string(1) + "-" + version_data.get_string(2) + version_data.get_string(3)) ) or ( version_name == (version_data.get_string(1) + "-" + version_type_fullname[version_data.get_string(2)] + version_data.get_string(3)) ):
+												# same version, don't care about other updates.
+												break
+										print("update available 3")
 										notify_update(version_data.get_string(1), version_data.get_string(2), version_data.get_string(3), release["prerelease"], release["html_url"])
 										break
 									else:
-										if ( version_name == (version_data.get_string(1) + version_data.get_string(2)) ) or ( version_name == (version_data.get_string(1) + version_type_fullname[version_data.get_string(2)]) ):
-											continue
-										print("update available")
+										if ( version_name == (version_data.get_string(1) + "-" + version_data.get_string(2)) ) or ( version_name == (version_data.get_string(1) + "-" + version_type_fullname[version_data.get_string(2)]) ):
+											# same version, don't care about other updates.
+											break
+										print("update available 2")
 										notify_update(version_data.get_string(1), version_data.get_string(2), "1", release["prerelease"], release["html_url"])
 										break
 								else:
