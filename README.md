@@ -11,7 +11,7 @@ An Android app (later ported to Windows) that allows previewing classic Shirts a
 
 Made while eating tofu so everything's all in light mode, please beware.
 
-[Click here to go straight to installation instructions.](#download) [Click here if clicking on that one doesn't work.](https://github.com/afterl1ght/BloxClothViewer/releases)
+[Click here to go straight to installation instructions](#download) or [click here if clicking on that one doesn't work.](https://github.com/afterl1ght/BloxClothViewer/releases)
 
 # Features
 - Shirt and Pants texture support in various casual image formats (JPEG and PNG formats are greatly recommended)
