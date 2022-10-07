@@ -4,7 +4,7 @@
 <h1 align="center">BloxClothViewer (Bloxattire)</h1>
 
 <p align="center">
-Latest: v1.0.0-b2 BP64
+Latest: v1.0.0-b3 BP67
 </p>
 
 An Android app (later ported to Windows) that allows previewing classic Shirts and Pants for Roblox, making sure they match and seamless.
