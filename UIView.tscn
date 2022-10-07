@@ -1208,6 +1208,7 @@ margin_bottom = 182.0
 rect_scale = Vector2( 0.6, 0.6 )
 texture_normal = ExtResource( 86 )
 script = ExtResource( 87 )
+uimainpath = NodePath("../..")
 
 [node name="EventControl" type="Control" parent="."]
 anchor_right = 1.0
