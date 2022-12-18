@@ -4,7 +4,7 @@
 <h1 align="center">BloxClothViewer (Bloxattire)</h1>
 
 <p align="center">
-Latest: v1.0.0-b2 BP64
+Latest: v1.0.0-b4 BP69
 </p>
 
 An Android app (later ported to Windows) that allows previewing classic Shirts and Pants for Roblox, making sure they match and seamless.
@@ -13,8 +13,11 @@ Made while eating tofu so everything's all in light mode, please beware.
 
 [Click here to go straight to installation instructions](#download) or [click here if clicking on that one doesn't work.](https://github.com/afterl1ght/BloxClothViewer/releases)
 
+Only Classic Shirt and Classic Pants can be previewed in this app in order to check for any errors that might have occurred during creation. In order to check for any potential issues with Layered Clothing, it would be preferable to use your 3D modeling program as well as Roblox Studio.
+If you don't know what Classic Shirt and Pants are, Roblox has categorized 2D Shirts and Pants as Classic to make way for 3D Layered Clothing.
+
 # Features
-- Shirt and Pants texture support in various casual image formats (JPEG and PNG formats are greatly recommended)
+- Classic Shirt and Classic Pants texture support in various casual image formats (JPEG and PNG formats are greatly recommended)
 - A grey R6 character model for testing your clothing to its best accuracy
 - Hand-drawn UI
 - Cool and slightly infuriating grid
@@ -22,6 +25,7 @@ Made while eating tofu so everything's all in light mode, please beware.
 - Color picker to customize scene and character model
 - *Very cool outline*
 - Does not give bobux
+- Solves issues that can be solved by using Studio (which Mobile users might not have access to) unless there's some effort at play...
 
 # Requirements
 - **For Android:**
@@ -73,3 +77,13 @@ Before downloading, please read the following instructions, depending on your de
 - This is made using **Godot 3.4.4**.
 - My friends like this. I appreciate it. I hope you like it too.
 - In case you wanna donate, I did think of it, but it feels selfish earning money from a simple app anyone can build.
+
+(Update 12/18/2022)
+- If you want to preview Classic Clothing in Roblox Studio, one of the ways I know is to upload the Classic Shirt/Pants texture onto Roblox, then use those texture as **Shirt** and **Pants** texture.
+	- (Please note that any links I referred to may be outdated in the ongoing future!)
+	- About Classic Clothing: https://create.roblox.com/docs/avatar/accessories/classic-clothing
+	- About Shirt Instance: https://create.roblox.com/docs/reference/engine/classes/Shirt
+	- About Pants Instance: https://create.roblox.com/docs/reference/engine/classes/Pants
+- Another way would be to access Roblox Studio local files and replace some local textures, then you can test it locally (even without internet). I haven't used it for a while though, so I'm not sure if this method works anymore.
+
+I;m sorry I can't provide you much useful information. If you want to use this app though, it's all yours.

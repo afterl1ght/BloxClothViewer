@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://robloxmodels/updatedBlockModels/r6/clothCompatBlockR6.obj" type="ArrayMesh" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://appassets/materialassets/gridsquareFloor.tres" type="Material" id=6]
 [ext_resource path="res://appassets/materialassets/FakeSky.tres" type="Material" id=7]
 [ext_resource path="res://robloxmodels/mat/blockmat6/shaderres/materialLegLeft.tres" type="Material" id=8]
-[ext_resource path="res://addons/pe_outline/PostEffectOutline.gd" type="Script" id=9]
 [ext_resource path="res://UIView.tscn" type="PackedScene" id=10]
 [ext_resource path="res://robloxmodels/mat/blockmat6/shaderres/materialClothing.tres" type="Material" id=11]
 [ext_resource path="res://robloxmodels/mat/blockmat6/shaderres/materialLegRight.tres" type="Material" id=12]
@@ -19,20 +18,6 @@
 [ext_resource path="res://scripts/viewerMech/gridsquarebehavior.gd" type="Script" id=17]
 [ext_resource path="res://robloxmodels/mat/blockmat6/shaderres/materialArmRight.tres" type="Material" id=18]
 [ext_resource path="res://robloxmodels/mat/blockmat6/shaderres/materialArmLeft.tres" type="Material" id=19]
-[ext_resource path="res://addons/pe_outline/sobel_outline.shader" type="Shader" id=20]
-
-[sub_resource type="ShaderMaterial" id=5]
-render_priority = 127
-shader = ExtResource( 20 )
-shader_param/outline_color = Color( 0, 0, 0, 1 )
-shader_param/luma_coef = 80.0
-shader_param/color_coef = 80.0
-shader_param/depth_coef = 8.0
-shader_param/cutoff = 0.1
-
-[sub_resource type="CubeMesh" id=6]
-flip_faces = true
-size = Vector3( 1, 1, 1 )
 
 [sub_resource type="QuadMesh" id=4]
 size = Vector2( 200, 200 )
@@ -44,7 +29,6 @@ size = Vector2( 200, 200 )
 [node name="UIMain" parent="." instance=ExtResource( 10 )]
 skinModelPath = NodePath("../SkinModel")
 directionalLightPath = NodePath("../DirectionalLight")
-postFXOutlinePath = NodePath("../Camera/PostEffectOutlineBox")
 
 [node name="HelperUI" parent="." instance=ExtResource( 14 )]
 
@@ -52,14 +36,6 @@ postFXOutlinePath = NodePath("../Camera/PostEffectOutlineBox")
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.5, -5.85 )
 fov = 80.0
 script = ExtResource( 5 )
-
-[node name="PostEffectOutlineBox" type="MeshInstance" parent="Camera"]
-transform = Transform( 50.025, 0, 0, 0, 50.025, 0, 0, 0, 50.025, 0, 0, 0 )
-visible = false
-material_override = SubResource( 5 )
-mesh = SubResource( 6 )
-material/0 = null
-script = ExtResource( 9 )
 
 [node name="FakeSky" type="MeshInstance" parent="."]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 63.6108 )
@@ -77,7 +53,7 @@ blockModelPath = NodePath("SkinMain/block6")
 transform = Transform( 0.898794, 0, -0.438371, 0, 1, 0, 0.438371, 0, 0.898794, 0, 0, 0 )
 
 [node name="block6" type="MeshInstance" parent="SkinModel/SkinMain"]
-transform = Transform( 1, -1.04308e-07, 1.19209e-07, 2.98023e-08, 1, -2.98023e-08, 2.98023e-08, 3.27826e-07, 1, 2.98023e-08, -2.5, -0.5 )
+transform = Transform( 1, -1.04308e-07, 1.19209e-07, 2.98023e-08, 1, -2.98023e-08, 2.98023e-08, 4.17233e-07, 1, 2.98023e-08, -2.5, -0.5 )
 layers = 3
 mesh = ExtResource( 2 )
 skeleton = NodePath("../../..")
@@ -90,7 +66,7 @@ material/4 = ExtResource( 8 )
 material/5 = ExtResource( 12 )
 
 [node name="gridsquare" type="MeshInstance" parent="SkinModel/SkinMain"]
-transform = Transform( 50, -7.62939e-06, -4.47035e-08, 0, -3.8147e-06, 1, -9.53674e-07, -50, 1.49012e-07, 1.49012e-07, -2.586, -1.19209e-07 )
+transform = Transform( 50, -7.62939e-06, -5.96046e-08, 0, -3.8147e-06, 1, -9.53674e-07, -50, 1.78814e-07, 1.78814e-07, -2.586, -2.38419e-07 )
 layers = 2
 cast_shadow = 2
 mesh = SubResource( 3 )

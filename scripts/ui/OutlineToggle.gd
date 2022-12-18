@@ -14,14 +14,11 @@ func _ready():
 
 func _pressed():
 	outlineEnabled = !outlineEnabled
-	if postfxoutline:
-		print("e: ", outlineEnabled)
-		postfxoutline.visible = outlineEnabled
+	print("e: ", outlineEnabled)
+	if (!outlineEnabled):
+		Preloader.outlinemat.set_shader_param("outline_color", Color.transparent)
 	else:
-		postfxoutline = uimain.postFXOutline
-		if postfxoutline:
-			print("e: ", outlineEnabled)
-			postfxoutline.visible = outlineEnabled
+		Preloader.outlinemat.set_shader_param("outline_color", Color.black)
 	
 	if outlineEnabled:
 		modulate.a = 1

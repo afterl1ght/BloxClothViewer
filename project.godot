@@ -89,11 +89,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/ui/statusNotifierHitbox.gd"
 }, {
-"base": "MeshInstance",
-"class": "PostEffectOutlineBox",
-"language": "GDScript",
-"path": "res://addons/pe_outline/PostEffectOutline.gd"
-}, {
 "base": "Spatial",
 "class": "SkinModel",
 "language": "GDScript",
@@ -141,7 +136,6 @@ _global_script_class_icons={
 "Matrix": "",
 "Overlay": "",
 "PicHitbox": "",
-"PostEffectOutlineBox": "",
 "SkinModel": "",
 "SmolButts": "",
 "UIMain": "",
@@ -159,8 +153,8 @@ boot_splash/image="res://akashiroSplash.png"
 boot_splash/bg_color=Color( 0.0745098, 0.0745098, 0.0745098, 1 )
 config/icon="res://icon.png"
 config/windows_native_icon="res://bloxattire.ico"
-config/version_name="1.0.0-b3"
-config/build_phase=67
+config/version_name="1.0.0-b4"
+config/build_phase=69
 
 [autoload]
 
@@ -186,7 +180,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/native_dialogs/plugin.cfg", "res://addons/pe_outline/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/native_dialogs/plugin.cfg" )
 
 [input]
 

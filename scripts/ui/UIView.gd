@@ -8,9 +8,6 @@ onready var skinModel : SkinModel = get_node(skinModelPath)
 export(NodePath) var directionalLightPath
 onready var directionalLight : DirectionalLight = get_node(directionalLightPath)
 
-export(NodePath) var postFXOutlinePath
-onready var postFXOutline : PostEffectOutlineBox = get_node(postFXOutlinePath)
-
 # UI y position
 var ui_y_height = 0
 # UI offset (i.e. for text field visibility when a virtual keyboard pops up)
