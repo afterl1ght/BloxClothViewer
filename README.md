@@ -11,10 +11,13 @@ An Android app (later ported to Windows) that allows previewing classic Shirts a
 
 Made while eating tofu so everything's all in light mode, please beware.
 
-[Click here to go straight to installation instructions](#download) or [click here if clicking on that one doesn't work.](https://github.com/afterl1ght/BloxClothViewer/releases)
+[Click here to go to installation instructions](#download) or [click here to go straight to Releases page.](https://github.com/afterl1ght/BloxClothViewer/releases)
 
-Only Classic Shirt and Classic Pants can be previewed in this app in order to check for any errors that might have occurred during creation. In order to check for any potential issues with Layered Clothing, it would be preferable to use your 3D modeling program as well as Roblox Studio.
-If you don't know what Classic Shirt and Pants are, Roblox has categorized 2D Shirts and Pants as Classic to make way for 3D Layered Clothing.
+> Only **Classic Shirt** and **Classic Pants** can be previewed in this app in order to check for any errors that might have occurred during creation. In order to check for any potential issues with Layered Clothing, it would be preferable to use your **3D modeling program** as well as **Roblox Studio**.
+
+> If you don't know what Classic Shirt and Pants are, Roblox has categorized 2D Shirts and Pants as **Classic Clothing** to make way for 3D Layered Clothing.
+
+> There **ARE** other ways to preview Classic Shirt and Classic Pants with better accuracy, such as using the official **Roblox Studio**. I've made a brief summary on that method [here](#studio-method) - though it requires a little bit of research and effort.
 
 # Features
 - Classic Shirt and Classic Pants texture support in various casual image formats (JPEG and PNG formats are greatly recommended)
@@ -47,7 +50,8 @@ If you don't know what Classic Shirt and Pants are, Roblox has categorized 2D Sh
 - **For MacOS**
     - Untested and I don't have a Mac so no downloads yet. I believe the current source code, if compiled, can run on a Macbook pretty well. (That doesn't mean I won't work on it, though!)
 
-<a name="download"></a>
+<a name="download"/>
+
 # Download & Installation
 Before downloading, please read the following instructions, depending on your device's platform and operating system.<br>
 
@@ -78,6 +82,8 @@ Before downloading, please read the following instructions, depending on your de
 - My friends like this. I appreciate it. I hope you like it too.
 - In case you wanna donate, I did think of it, but it feels selfish earning money from a simple app anyone can build.
 
+<a name="studio-method"/>
+
 (Update 12/18/2022)
 - If you want to preview Classic Clothing in Roblox Studio, one of the ways I know is to upload the Classic Shirt/Pants texture onto Roblox, then use those texture as **Shirt** and **Pants** texture.
 	- (Please note that any links I referred to may be outdated in the ongoing future!)
@@ -86,4 +92,4 @@ Before downloading, please read the following instructions, depending on your de
 	- About Pants Instance: https://create.roblox.com/docs/reference/engine/classes/Pants
 - Another way would be to access Roblox Studio local files and replace some local textures, then you can test it locally (even without internet). I haven't used it for a while though, so I'm not sure if this method works anymore.
 
-I;m sorry I can't provide you much useful information. If you want to use this app though, it's all yours.
+I'm sorry I can't provide you much useful information. If you want to use this app though, it's all yours!
